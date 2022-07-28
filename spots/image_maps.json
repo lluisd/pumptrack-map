@@ -1,7 +1,8 @@
 [
   {
     "id": "frodenofund",
-    "image": "/images/pumptrack/salt/overview.jpg",
+    "imagesPath": "/images/pumptrack/salt",
+    "image": "overview.jpg",
     "maps" : [
       {
         "position": "bottom-left",
@@ -9,7 +10,8 @@
         "height": "11.08%",
         "left": "9.30%",
         "top": "52.52%",
-        "text": ""
+        "text": "",
+        "image": "bottom_left.jpg"
       },
       {
         "position": "middle-center",
@@ -17,7 +19,8 @@
         "height": "7.58%",
         "left": "46.98%",
         "top": "44.55%",
-        "text": ""
+        "text": "",
+        "image": "middle_center.jpg"
       },
       {
         "position": "upper-left",
@@ -25,7 +28,8 @@
         "height":"8.171206225680933%",
         "left":"36.248973165388826%",
         "top":"43.190661478599225%",
-        "text": ""
+        "text": "",
+        "image": "upper_left.jpg"
       },
       {
         "position": "bottom-center",
@@ -33,7 +37,8 @@
         "height":"15.17509727626459%",
         "left":"52.78785596933188%",
         "top":"65.1750972762646%",
-        "text": ""
+        "text": "",
+        "image": "bottom_center.jpg"
       },
       {
         "position": "bottom-right",
@@ -41,7 +46,8 @@
         "height":"12.45136186770428%",
         "left":"83.56551204819277%",
         "top":"51.36186770428015%",
-        "text": ""
+        "text": "",
+        "image": "bottom_right.jpg"
       },
       {
         "position": "uppper-right",
@@ -49,7 +55,8 @@
         "height":"8.171206225680933%",
         "left":"56.511842825848845%",
         "top":"42.996108949416346%",
-        "text": ""
+        "text": "",
+        "image": "uppper_right.jpg"
       }
     ]
   }

@@ -3,11 +3,16 @@ import Box from '@mui/material/Box';
 import Drawer from '@mui/material/Drawer';
 import styles from './InteractiveImage.module.css';
 import { ImageMap } from '@qiuz/react-image-map';
+import { useState } from 'react'
+import Panorama from '../Panorama/index'
+
 
 export default function InteractiveImage({pumptrackId, data}) {
+  const [panorama, setPanorama] = useState(null);
+
   const pumptrack = data.find(item => item.id === pumptrackId)
   if (pumptrack !== undefined) {
-    const img = pumptrack.image
+    const img = `${pumptrack.imagesPath}/${pumptrack.image}`
 
     const mapArea = pumptrack.maps.map(map => {
       return {
@@ -16,7 +21,6 @@ export default function InteractiveImage({pumptrackId, data}) {
         left: map.left,
         top: map.top,
         style: { background: 'rgba(255, 0, 0, 0.5)' },
-        onMouseOver: () => console.log('map onMouseOver'),
         render: (area, index) => (
           <span
             style={{
@@ -33,9 +37,11 @@ export default function InteractiveImage({pumptrackId, data}) {
     })
 
     const onMapClick = (area, index) => {
-      const tip = `click map${index + 1}`;
-      console.log(tip, area);
-      alert(tip);
+      setPanorama(pumptrack.maps[index])
+    }
+
+    const removePanorama = () => {
+      setPanorama(null)
     }
 
     return (
@@ -43,12 +49,16 @@ export default function InteractiveImage({pumptrackId, data}) {
         display="flex"
         justifyContent="center"
         alignItems="center">
-        <ImageMap
-          className={styles['interactiveImage-image']}
-          src={img}
-          map={mapArea}
-          onMapClick={onMapClick}
-        />
+        {panorama ?
+          <Panorama panorama={panorama} pumptrack={pumptrack} handlerBack={removePanorama}/>
+          :
+          <ImageMap
+            className={styles['interactiveImage-image']}
+            src={img}
+            map={mapArea}
+            onMapClick={onMapClick}
+          />
+        }
       </Box>
     )
   }

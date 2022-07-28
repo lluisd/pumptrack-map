@@ -32,12 +32,10 @@ function MapPage({ allSpotsData, imageMaps }) {
              aria-labelledby="modal-modal-title"
              aria-describedby="modal-modal-description">
         <Box sx={modalStyle}>
-          <Typography id="modal-modal-title" variant="h6" component="h2">
-            {pumptrack && `Pumptrack ${pumptrack.name}`}
+          <Typography id="modal-modal-title" variant="h6" component="h2" align="center">
+            {pumptrack && pumptrack.name}
           </Typography>
-          <Typography id="modal-modal-description" sx={{ mt: 2 }}>
-            {pumptrack && <InteractiveImage pumptrackId={pumptrack.id} data={imageMaps.data}/> }
-          </Typography>
+          {pumptrack && <InteractiveImage pumptrackId={pumptrack.id} data={imageMaps.data}/> }
         </Box>
       </Modal>
     </Layout>
