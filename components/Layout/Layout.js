@@ -41,7 +41,7 @@ export default function Layout({ children, home }) {
     <div>
       <AppBar  style={{ background: '#ffee02', color: 'black'}}
         position="fixed"
-        sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
+        //sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
       >
         <Toolbar>
           <Typography variant="h6" noWrap component="div">
@@ -52,7 +52,6 @@ export default function Layout({ children, home }) {
       <div>
         {children}
       </div>
-      <LeftMenu></LeftMenu>
     </div>
   )
 }

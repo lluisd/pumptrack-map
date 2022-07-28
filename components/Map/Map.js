@@ -5,7 +5,7 @@ import { v4 as uuidv4 } from 'uuid';
 import 'leaflet/dist/leaflet.css';
 import styles from './Map.module.css';
 
-const Map = ({center, zoom, markers, maxBounds}) => {
+const Map = ({center, zoom, markers, maxBounds, onClick}) => {
   return (
     <MapContainer center={center} zoom={zoom} scrollWheelZoom={true} style={{height: "100vh", width: "100wh"}} minZoom={9} maxBounds={maxBounds}
     className={styles.map}>
@@ -17,13 +17,8 @@ const Map = ({center, zoom, markers, maxBounds}) => {
         return  (
           <Marker key={uuidv4()} position={marker.coordinates} icon={getIcon(marker)}
                   eventHandlers={{
-                    click: () => {
-                      console.log('marker clicked')
-                    },
+                    click: () => onClick(marker)
                   }}>
-            <Popup>
-              emtpy
-            </Popup>
           </Marker>
         )
       })}

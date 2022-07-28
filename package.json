@@ -1,7 +1,6 @@
 {
   "name": "pumptracks",
   "version": "0.1.0",
-  "private": true,
   "scripts": {
     "dev": "next dev",
     "build": "next build",
@@ -13,15 +12,16 @@
     "@emotion/styled": "^11.8.1",
     "@mui/icons-material": "^5.8.0",
     "@mui/material": "^5.7.0",
+    "@qiuz/react-image-map": "^1.1.8",
     "leaflet": "^1.8.0",
-    "next": "12.1.6",
-    "react": "18.1.0",
-    "react-dom": "18.1.0",
+    "next": "^12.1.6",
+    "react": "^18.1.0",
+    "react-dom": "^18.1.0",
     "react-leaflet": "^4.0.0",
     "uuid": "^8.3.2"
   },
   "devDependencies": {
-    "eslint": "8.15.0",
-    "eslint-config-next": "12.1.6"
+    "eslint": "^8.15.0",
+    "eslint-config-next": "^12.1.6"
   }
 }
