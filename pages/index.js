@@ -10,7 +10,7 @@ import Box from '@mui/material/Box'
 
 function MapPage({ allSpotsData, imageMaps }) {
   const [center, setCenter] = useState([41.979401, 2.821426]);
-  const [mapZoom, setMapZoom] = useState(9);
+  const [mapZoom, setMapZoom] = useState(10);
   const [bounds, setBounds] = useState([[42.27917879724292, 2.254910573201578],[41.62981728626594, 3.2354221997777097]]);
 
   const [pumptrack, setPumptrack] = useState(null);
@@ -21,21 +21,18 @@ function MapPage({ allSpotsData, imageMaps }) {
     setPumptrack(pumptrack)
     setOpenModal(true)
   }
-  const ModalHandleClose = () => setOpenModal(false);
+  const modalHandleClose = () => setOpenModal(false);
 
 
   return (
     <Layout>
       <Map center={center} zoom={mapZoom} markers={allSpotsData.spots} maxBounds={bounds} onClick={handleSelectedPumptrack} />
       <Modal open={openModal}
-             onClose={ModalHandleClose}
+             onClose={modalHandleClose}
              aria-labelledby="modal-modal-title"
              aria-describedby="modal-modal-description">
         <Box sx={modalStyle}>
-          <Typography id="modal-modal-title" variant="h6" component="h2" align="center">
-            {pumptrack && pumptrack.name}
-          </Typography>
-          {pumptrack && <InteractiveImage pumptrackId={pumptrack.id} data={imageMaps.data}/> }
+          {pumptrack && <InteractiveImage pumptrack={pumptrack} data={imageMaps.data} handlerOnClose={modalHandleClose}/> }
         </Box>
       </Modal>
     </Layout>

@@ -27,10 +27,10 @@ const Map = ({center, zoom, markers, maxBounds, onClick}) => {
 }
 
 function getIcon(marker) {
-  let iconFile = 'pumptrack.png'
+  let iconFile = 'icon.svg'
   switch (marker.company) {
     case 'velosolutions':
-      iconFile = 'velosolutions.jpg'
+      iconFile = 'icon-velo.svg'
   }
 
   return L.icon({

@@ -46,6 +46,18 @@
     "coordinates": [41.95918867569161, 3.211325254896999],
     "name": "Pumptrack Begur",
     "company": "pumptrack"
+  },
+  {
+    "id": "empuriabrava",
+    "coordinates": [42.24827832219093, 3.120503239017752],
+    "name": "under construction",
+    "company": "velosolutions"
+  },
+  {
+    "id": "santboi",
+    "coordinates": [41.33191701988174, 2.053920284386088],
+    "name": "Pumptrack Sant boi",
+    "company": "pumptrack"
   }
 ]
 

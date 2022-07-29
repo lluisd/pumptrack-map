@@ -6,7 +6,7 @@ import Typography from '@mui/material/Typography'
 import Button from '@mui/material/Button'
 import { Divider, Drawer, List, ListItem, ListItemIcon, ListItemText } from '@mui/material'
 import { createTheme, ThemeProvider, styled } from '@mui/material/styles';
-import { green, purple } from '@mui/material/colors';
+import { blue, red } from '@mui/material/colors';
 import styles from './layout.module.css'
 import LeftMenu from '../LeftMenu/LeftMenu'
 
@@ -15,10 +15,10 @@ const drawerWidth = 240
 const theme = createTheme({
   palette: {
     primary: {
-      main: purple[500],
+      main: red[500],
     },
     secondary: {
-      main: green[500],
+      main: blue[500],
     },
   },
 });
@@ -33,25 +33,22 @@ const DrawerHeader = styled('div')(({ theme }) => ({
 }));
 
 
-const name = 'Your Name'
-export const siteTitle = 'Next.js Sample Website'
-
 export default function Layout({ children, home }) {
   return (
     <div>
-      <AppBar  style={{ background: '#ffee02', color: 'black'}}
-        position="fixed"
-        //sx={{ width: `calc(100% - ${drawerWidth}px)`, ml: `${drawerWidth}px` }}
-      >
-        <Toolbar>
-          <Typography variant="h6" noWrap component="div">
-            Pumptracks map
-          </Typography>
-        </Toolbar>
-      </AppBar>
-      <div>
-        {children}
-      </div>
+      <ThemeProvider theme={theme}>
+        <AppBar  style={{ background: '#D32A23', color: 'black'}}
+          position="fixed">
+          <Toolbar>
+            <Typography variant="h6" noWrap component="div" style={{color: 'white'}}>
+              Pumptracks map
+            </Typography>
+          </Toolbar>
+        </AppBar>
+        <div>
+          {children}
+        </div>
+      </ThemeProvider>
     </div>
   )
 }
