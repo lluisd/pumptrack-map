@@ -1,12 +1,11 @@
 import {useRef, useEffect} from 'react'
 import 'aframe'
 import {Entity, Scene} from 'aframe-react'
-import { Grid, Link } from '@mui/material'
-import Button from '@mui/material/Button'
+import { Grid } from '@mui/material'
 
 const VideoVR = ({videoVR, pumptrack}) => {
   if (videoVR && pumptrack) {
-    const videoUrl = `${pumptrack.imagesPath}/${pumptrack.videoFHD}`
+    const videoUrl = `/images/pumptrack/${pumptrack.id}/${pumptrack.video.high}`
     const videoEl = useRef(null)
 
     useEffect(() => {
@@ -31,29 +30,7 @@ const VideoVR = ({videoVR, pumptrack}) => {
         </Grid>
       </Grid>
     )
-
-
   }
-
-
-
-
 }
-
-// AFRAME.registerComponent('play-on-click', {
-//   init: function () {
-//     let videoEl = this.el.getAttribute('material').src
-//     videoEl.volume = 0.2
-//     this.onClick = this.onClick.bind(this)
-//   },
-//   onClick: function (evt) {
-//     let videoEl = this.el.getAttribute('material').src
-//     if (videoEl.paused) {
-//       videoEl.play()
-//     } else {
-//       videoEl.pause()
-//     }
-//   }
-// });
 
 export default VideoVR

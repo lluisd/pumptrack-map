@@ -1,13 +1,12 @@
 import * as React from 'react'
-import Box from '@mui/material/Box'
 import 'aframe'
 import {Entity, Scene} from 'aframe-react'
 import { Grid, Link } from '@mui/material'
-import Button from '@mui/material/Button'
 
 const Panorama = ({panorama, pumptrack}) => {
   if (panorama && pumptrack) {
-    const image = `${pumptrack.imagesPath}/${panorama.image}`
+
+    const image = `/images/pumptrack/${pumptrack.id}/${panorama.image}`
 
     return (
         <Grid container spacing={2} direction="column" >
