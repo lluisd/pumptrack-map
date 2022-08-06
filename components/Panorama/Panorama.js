@@ -6,7 +6,7 @@ import { Grid, Link } from '@mui/material'
 const Panorama = ({panorama, pumptrack}) => {
   if (panorama && pumptrack) {
 
-    const image = `/images/pumptrack/${pumptrack.id}/${panorama.image}`
+    const image = `${process.env.NEXT_PUBLIC_CDN_URL}/${pumptrack.id}/${panorama.image}`
 
     return (
         <Grid container spacing={2} direction="column" >

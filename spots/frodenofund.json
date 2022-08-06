@@ -1,0 +1,80 @@
+{
+  "id": "frodenofund",
+  "video": {
+    "small": "frodenofund-1080.mp4",
+    "medium": "frodenofund-720.mp4",
+    "high": "frodenofund-1080.mp4"
+  },
+  "panoramas" : [
+    {
+      "imageArea": {
+        "width":"11%",
+        "height":"15%",
+        "left":"79.65%",
+        "top":"1.45%"
+      },
+      "image": {
+        "small": "frodenofund-bottom-left-s.jpg",
+        "medium": "frodenofund-bottom-left-m.jpg",
+        "large": "frodenofund-bottom-left-l.jpg"
+      },
+      "rotation": "0 -45 0"
+    },
+    {
+      "imageArea": {
+        "width":"11%",
+        "height":"15%",
+        "left":"60.18%",
+        "top":"9.92%"
+      },
+      "image": {
+        "small": "frodenofund-middle-center-s.jpg",
+        "medium": "frodenofund-middle-center-m.jpg",
+        "large": "frodenofund-middle-center-l.jpg"
+      },
+      "rotation": "0 90 0"
+    },
+    {
+      "imageArea": {
+        "width":"11%",
+        "height":"15%",
+        "left":"79.32%",
+        "top":"83.05%"
+      },
+      "image": {
+        "small": "frodenofund-upper-left-s.jpg",
+        "medium": "frodenofund-upper-left-m.jpg",
+        "large": "frodenofund-upper-left-l.jpg"
+      },
+      "rotation": "0 -60 0"
+    },
+    {
+      "imageArea": {
+        "width":"11%",
+        "height":"15%",
+        "left":"0.61%",
+        "top":"35.10%"
+      },
+      "image": {
+        "small": "frodenofund-upper-right-s.jpg",
+        "medium": "frodenofund-upper-right-m.jpg",
+        "large": "frodenofund-upper-right-l.jpg"
+      },
+      "rotation": "0 240 0"
+    },
+    {
+      "imageArea": {
+        "width":"11%",
+        "height":"15%",
+        "left":"40.05%",
+        "top":"43.09%"
+      },
+      "image": {
+        "small": "frodenofund-upper-center-s.jpg",
+        "medium": "frodenofund-upper-center-m.jpg",
+        "large": "frodenofund-upper-center-l.jpg"
+      },
+      "rotation": "0 250 0"
+    }
+  ]
+}
