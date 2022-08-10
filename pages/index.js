@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useState, useDebugValue  } from 'react'
 import { getSortedSpotsData } from '../lib/spots'
 import Layout from '../components/Layout/Layout'
 import Map from '../components/Map'
@@ -6,29 +6,27 @@ import { InteractiveImage } from '../components/InteractiveImage'
 import Modal from '@mui/material/Modal'
 import Box from '@mui/material/Box'
 import styles from "../styles/Home.module.css"
+import useSWR from 'swr'
 
 function MapPage({ allSpotsData }) {
-  const [center, setCenter] = useState([41.979401, 2.821426]);
-  const [mapZoom, setMapZoom] = useState(10);
-  const [bounds, setBounds] = useState([[42.27917879724292, 2.254910573201578],[41.62981728626594, 3.2354221997777097]]);
-  const [pumptrack, setPumptrack] = useState(null);
-  const [openModal, setOpenModal] = useState(false)
-
+  const center = [41.979401, 2.821426]
+  const mapZoom = 10
+  const bounds = [[42.27917879724292, 2.254910573201578],[41.62981728626594, 3.2354221997777097]]
+  const [pumptrack, setPumptrack] = useState(null)
   function handleSelectedPumptrack (pumptrack) {
     setPumptrack(pumptrack)
-    setOpenModal(true)
   }
-  const modalHandleClose = () => setOpenModal(false);
+  const modalHandleClose = () => setPumptrack(null)
 
   return (
     <Layout>
       <Map center={center} zoom={mapZoom} markers={allSpotsData.spots} maxBounds={bounds} onClick={handleSelectedPumptrack} />
-      <Modal open={openModal}
+      <Modal open={!!pumptrack}
              onClose={modalHandleClose}
              aria-labelledby="modal-modal-title"
              aria-describedby="modal-modal-description">
         <Box sx={modalStyle}>
-          {pumptrack && <InteractiveImage pumptrack={pumptrack} handlerOnClose={modalHandleClose}/> }
+          {pumptrack && <InteractiveImage spot={pumptrack} handlerOnClose={modalHandleClose}/> }
         </Box>
       </Modal>
     </Layout>

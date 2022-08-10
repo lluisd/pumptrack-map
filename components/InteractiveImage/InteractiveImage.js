@@ -9,12 +9,19 @@ import { Grid } from '@mui/material'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import VisibilityIcon from '@mui/icons-material/Visibility'
+import useSWR from 'swr'
 
-const InteractiveImage = ({pumptrack, handlerOnClose}) => {
+const fetcher = (url) => fetch(url).then((res) => res.json())
+
+const InteractiveImage = ({spot, handlerOnClose}) => {
+  let pumptrack = { panoramas: [] }
+  const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_CDN_URL}/${process.env.NEXT_PUBLIC_DATA}/${spot.id}.json`, fetcher)
+
+  if (data) pumptrack = data
   const [panorama, setPanorama] = useState(null)
   const [videoVR, setVideoVR] = useState(null)
 
-  const img = `${process.env.NEXT_PUBLIC_CDN_URL}/${pumptrack.id}/${pumptrack.image}`
+  const img = `${process.env.NEXT_PUBLIC_CDN_URL}/${process.env.NEXT_PUBLIC_MAPS}/${spot.id}.jpg`
 
   const mapArea = pumptrack.panoramas.map(map => {
     return {
@@ -55,9 +62,9 @@ const InteractiveImage = ({pumptrack, handlerOnClose}) => {
     removeVideoVR()
   }
 
-  const showVideoVR = () => {
+  const handlerShowVideo = () => {
     removePanorama()
-    setVideoVR(true)
+    setVideoVR(pumptrack.video)
   }
 
   return (
@@ -78,7 +85,7 @@ const InteractiveImage = ({pumptrack, handlerOnClose}) => {
               </Grid>
               <Grid item>
                 <Box display="flex" justifyContent="flex-start" sx={{ ml: 4 }}>
-                  {!videoVR && pumptrack.video && <Button variant="outlined" onClick={showVideoVR}>VR video</Button>}
+                  {!videoVR && pumptrack.video && <Button variant="outlined" onClick={handlerShowVideo}>VR video</Button>}
                 </Box>
               </Grid>
             </Grid>
@@ -95,8 +102,8 @@ const InteractiveImage = ({pumptrack, handlerOnClose}) => {
           display="flex"
           justifyContent="center"
           alignItems="center">
-         <Panorama panorama={panorama} pumptrack={pumptrack} />
-         <VideoVR videoVR={videoVR} pumptrack={pumptrack}/>
+         <Panorama panorama={panorama} />
+         <VideoVR videoVR={videoVR}/>
           {!panorama && !videoVR &&
                 <ImageMap
                   className={styles['interactiveImage-image']}

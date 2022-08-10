@@ -4,146 +4,69 @@
     "coordinates": [442.12132197711474, 3.120407781257502],
     "name": "Pumptrack L'Escala",
     "company": "pumptrack",
-    "video": null,
-    "image": "overview.jpg",
-    "panoramas" : []
+    "image": "overview.jpg"
   },
   {
     "id": "frodenofund",
     "coordinates": [41.96974631776626, 2.7818615483379463],
     "name": "Pumptrack Frodenofund",
     "company": "velosolutions",
-    "video": {
-      "small": "mobile_480.mp4",
-      "medium": "mobile_720.mp4",
-      "high": "mobile_1080.mp4"
-    },
-    "image": "overview.jpg",
-    "panoramas" : [
-      {
-        "imageArea": {
-          "width":"11%",
-          "height":"15%",
-          "left":"79.65%",
-          "top":"1.45%"
-        },
-        "image": "bottom_left.jpg",
-        "rotation": "0 -45 0"
-      },
-      {
-        "imageArea": {
-          "width":"11%",
-          "height":"15%",
-          "left":"60.18%",
-          "top":"9.92%"
-        },
-        "image": "middle_center.jpg",
-        "rotation": "0 90 0"
-      },
-      {
-        "imageArea": {
-          "width":"11%",
-          "height":"15%",
-          "left":"79.32%",
-          "top":"83.05%"
-        },
-        "image": "upper_left.jpg",
-        "rotation": "0 -60 0"
-      },
-      {
-        "imageArea": {
-          "width":"11%",
-          "height":"15%",
-          "left":"0.61%",
-          "top":"35.10%"
-        },
-        "image": "upper_right.jpg",
-        "rotation": "0 240 0"
-      },
-      {
-        "imageArea": {
-          "width":"11%",
-          "height":"15%",
-          "left":"40.05%",
-          "top":"43.09%"
-        },
-        "image": "upper_center.jpg",
-        "rotation": "0 250 0"
-      }
-    ]
+    "image": "overview.jpg"
   },
   {
     "id": "corca",
     "coordinates": [41.994193682736245, 3.0146931130264774],
     "name": "Pumptrack Corçà",
     "company": "pumptrack",
-    "video": null,
-    "image": "overview.jpg",
-    "panoramas" : []
+    "image": "overview.jpg"
   },
   {
     "id": "vilamalla",
     "coordinates": [42.22801243820019, 2.9633893980751753],
     "name": "Pumptrack Vilamalla",
     "company": "pumptrack",
-    "video": null,
-    "image": "overview.jpg",
-    "panoramas" : []
+    "image": "overview.jpg"
   },
   {
     "id": "cassa",
     "coordinates": [41.88229069589113, 2.8772406357798976],
     "name": "Pumptrack Cassà de la Selva",
     "company": "pumptrack",
-    "video": null,
-    "image": "overview.jpg",
-    "panoramas" : []
+    "image": "overview.jpg"
   },
   {
     "id": "palafolls",
     "coordinates": [41.66566914078792, 2.7468414933423135],
     "name": "Pumptrack Palafolls",
     "company": "pumptrack",
-    "video": null,
-    "image": "overview.jpg",
-    "panoramas" : []
+    "image": "overview.jpg"
   },
   {
     "id": "albons",
     "coordinates": [42.10125209226644, 3.083916348183266],
     "name": "Pumptrack Albons",
     "company": "pumptrack",
-    "video": null,
-    "image": "overview.jpg",
-    "panoramas" : []
+    "image": "overview.jpg"
   },
   {
     "id": "begur",
     "coordinates": [41.95918867569161, 3.211325254896999],
     "name": "Pumptrack Begur",
     "company": "pumptrack",
-    "video": null,
-    "image": "overview.jpg",
-    "panoramas" : []
+    "image": "overview.jpg"
   },
   {
     "id": "empuriabrava",
     "coordinates": [42.24827832219093, 3.120503239017752],
     "name": "under construction",
     "company": "velosolutions",
-    "video": null,
-    "image": "overview.jpg",
-    "panoramas" : []
+    "image": "overview.jpg"
   },
   {
     "id": "santboi",
     "coordinates": [41.33191701988174, 2.053920284386088],
     "name": "Pumptrack Sant boi",
     "company": "pumptrack",
-    "video": null,
-    "image": "overview.jpg",
-    "panoramas" : []
+    "image": "overview.jpg"
   }
 ]
-
-
