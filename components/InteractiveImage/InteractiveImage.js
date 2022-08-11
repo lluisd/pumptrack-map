@@ -21,7 +21,7 @@ const InteractiveImage = ({spot, handlerOnClose}) => {
   const [panorama, setPanorama] = useState(null)
   const [videoVR, setVideoVR] = useState(null)
 
-  const img = `${process.env.NEXT_PUBLIC_CDN_URL}/${process.env.NEXT_PUBLIC_MAPS}/${spot.id}.jpg`
+  const img = `${process.env.NEXT_PUBLIC_CDN_URL}/${process.env.NEXT_PUBLIC_IMAGES}/${spot.id}.jpg`
 
   const mapArea = pumptrack.panoramas.map(map => {
     return {
