@@ -7,3 +7,34 @@
   height: 100vh;
   background-color: aquamarine;
 }
+
+.contentbox {
+  background: #fff;
+  position: fixed;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 110px;
+  z-index: 200000;
+  min-width: 300px;
+  width: 100%;
+  max-width: calc( 100% - 20px);
+  border-radius: 25px;
+  bottom: 50px;
+  overflow: auto;
+  overflow-y: overlay;
+}
+
+@media only screen and (min-width: 769px){
+  .contentbox {
+    top: 70px;
+    bottom: 10px;
+    width: 700px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+
+  .contentbox {
+    width: 1000px;
+  }
+}

@@ -14,12 +14,12 @@ import useSWR from 'swr'
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
 const InteractiveImage = ({spot, handlerOnClose}) => {
-  let pumptrack = { panoramas: [] }
-  const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_CDN_URL}/${process.env.NEXT_PUBLIC_DATA}/${spot.id}.json`, fetcher)
-
-  if (data) pumptrack = data
   const [panorama, setPanorama] = useState(null)
   const [videoVR, setVideoVR] = useState(null)
+  const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_CDN_URL}/${process.env.NEXT_PUBLIC_DATA}/${spot.id}.json`, fetcher)
+  let pumptrack = { panoramas: [] }
+
+  if (data) pumptrack = data
 
   const img = `${process.env.NEXT_PUBLIC_CDN_URL}/${process.env.NEXT_PUBLIC_IMAGES}/${spot.id}.jpg`
 

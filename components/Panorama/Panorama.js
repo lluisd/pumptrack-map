@@ -2,6 +2,7 @@ import * as React from 'react'
 import 'aframe'
 import {Entity, Scene} from 'aframe-react'
 import { Grid, Link } from '@mui/material'
+import styles from './Panorama.module.css'
 
 const Panorama = ({panorama}) => {
   if (panorama) {
@@ -10,8 +11,7 @@ const Panorama = ({panorama}) => {
 
     return (
         <Grid container spacing={2} direction="column" >
-          <Grid item width="800px"
-                height="600px">
+          <Grid item className={styles.panorama}>
             <Scene embedded>
               <Entity primitive='a-sky' src={image} rotation={panorama.rotation}/>
             </Scene>

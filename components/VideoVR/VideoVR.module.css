@@ -1,0 +1,19 @@
+.videoVR {
+  height: 400px;
+  width: 400px;
+  align-self: center;
+}
+
+@media only screen and (min-width: 769px) {
+  .videoVR {
+    height: 600px;
+    width: 600px;
+  }
+}
+
+@media only screen and (min-width: 1200px) {
+  .videoVR {
+    height: 800px;
+    width: 800px;
+  }
+}

@@ -2,6 +2,7 @@ import {useRef, useEffect} from 'react'
 import 'aframe'
 import {Entity, Scene} from 'aframe-react'
 import { Grid } from '@mui/material'
+import styles from './VideoVR.module.css'
 
 const VideoVR = ({videoVR}) => {
   const videoEl = useRef(null)
@@ -21,9 +22,8 @@ const VideoVR = ({videoVR}) => {
 
     return (
       <Grid container spacing={2} direction="column" >
-        <Grid item width="800px"
-              height="600px">
-          <Scene embedded>
+        <Grid item className={styles.videoVR}>
+          <Scene embedded  loading-screen="dotsColor: red; backgroundColor: black">
             <a-assets>
               <video ref={videoEl} id="vrVideo" src={videoUrl} loop={false} playsInline crossOrigin="anonymous"  autoPlay={true}  />
             </a-assets>

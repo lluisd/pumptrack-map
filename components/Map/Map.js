@@ -1,4 +1,4 @@
-import { MapContainer, Marker, Popup, TileLayer } from 'react-leaflet'
+import { MapContainer, Marker, Popup, TileLayer, ZoomControl } from 'react-leaflet'
 import React from 'react'
 import L from 'leaflet'
 import { v4 as uuidv4 } from 'uuid';
@@ -8,11 +8,12 @@ import styles from './Map.module.css';
 const Map = ({center, zoom, markers, maxBounds, onClick}) => {
   return (
     <MapContainer center={center} zoom={zoom} scrollWheelZoom={true} style={{height: "100vh", width: "100wh"}} minZoom={9} maxBounds={maxBounds}
-    className={styles.map}>
+    className={styles.map} zoomControl={false}>
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
         url="https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGx1aXNkIiwiYSI6ImNranVsYnl3dDAwMWsybmxqdnV0aW1hbGwifQ.4uRoLJFUR6nnFLng4hLkWQ"
       />
+      <ZoomControl position="bottomright" />
       {markers.map((marker) => {
         return  (
           <Marker key={uuidv4()} position={marker.coordinates} icon={getIcon(marker)}
