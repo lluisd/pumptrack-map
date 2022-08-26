@@ -9,6 +9,15 @@ on:
       - main
   workflow_dispatch:
 
+env:
+  NEXT_PUBLIC_CDN_URL: https://pumptrack.azureedge.net/spots
+  NEXT_PUBLIC_DATA: data
+  NEXT_PUBLIC_IMAGES: images
+  NEXT_PUBLIC_IMAGE_SIZE: small
+  NEXT_PUBLIC_VIDEO_SIZE: high
+  NEXT_PUBLIC_VR_IMAGES: 360images
+  NEXT_PUBLIC_VR_VIDEOS: 360videos
+
 jobs:
   build:
     runs-on: ubuntu-latest
