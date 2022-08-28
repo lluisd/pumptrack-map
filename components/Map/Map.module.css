@@ -1,7 +1,13 @@
 .map {
   width: 100%;
+  height: 100%;
 }
 
 .map-icon {
   border-radius: 50%;
+}
+
+.control {
+  float: none;
+  display: inline-block;
 }
