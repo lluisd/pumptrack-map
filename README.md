@@ -17,6 +17,10 @@ NEXT_PUBLIC_VR_IMAGE_SIZE //small, medium or large
 NEXT_PUBLIC_VR_VIDEO_SIZE //small, medium or high
 ```
 
+## Assets
+Assets used for data, images, 360images (VR images) and 360videos (VR videos) can be found here:
+https://github.com/lluisd/pumptrack-map-assets
+
 ## Demo
 https://pumptrackmapapp.azurewebsites.net/
 
