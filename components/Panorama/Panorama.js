@@ -7,7 +7,7 @@ import styles from './Panorama.module.css'
 const Panorama = ({panorama}) => {
   if (panorama) {
 
-    const image = `${process.env.NEXT_PUBLIC_CDN_URL}/${process.env.NEXT_PUBLIC_VR_IMAGES}/${panorama.image[process.env.NEXT_PUBLIC_IMAGE_SIZE]}`
+    const image = `${process.env.NEXT_PUBLIC_CDN_BASE_URL}/${process.env.NEXT_PUBLIC_CDN_ROOT_DIR}/${process.env.NEXT_PUBLIC_VR_IMAGES}/${panorama.image[process.env.NEXT_PUBLIC_VR_IMAGE_SIZE]}`
 
     return (
         <Grid container spacing={2} direction="column" >

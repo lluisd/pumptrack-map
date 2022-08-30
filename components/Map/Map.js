@@ -13,8 +13,8 @@ const Map = ({center, zoom, markers, maxBounds, onClick}) => {
 
   const filterByBrand = (brand) => {
     let filteredMarkers = markers
-    if (brand != 'all') {
-      filteredMarkers = markers.filter(m => m.company === brand)
+    if (brand !== 'all') {
+      filteredMarkers = markers.filter(m => m.brand === brand)
     }
     setMarkersList(filteredMarkers)
   }
@@ -55,7 +55,7 @@ function filterByBrand (brand) {
 
 function getIcon(marker) {
   let iconFile = 'icon.svg'
-  switch (marker.company) {
+  switch (marker.brand) {
     case 'velosolutions':
       iconFile = 'icon-velo.svg'
   }

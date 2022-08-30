@@ -26,7 +26,7 @@ const FilterControl = ({handleFilterChange}) => {
         >
           <FormControlLabel value="all" control={<Radio />} label="All" />
           <FormControlLabel value="velosolutions" control={<Radio />} label="Velosolutions" />
-          <FormControlLabel value="pumptrack" control={<Radio />} label="Pumptrack Park" />
+          <FormControlLabel value="pumptrackpark" control={<Radio />} label="Pumptrack Park" />
         </RadioGroup>
       </FormControl>
     </Box>

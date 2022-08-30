@@ -49,7 +49,7 @@ const modalStyle = {
 }
 
 export async function getStaticProps() {
-  const allSpotsData = getSortedSpotsData()
+  const allSpotsData = await getSortedSpotsData()
 
   return {
     props: {

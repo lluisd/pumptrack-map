@@ -18,7 +18,7 @@ const VideoVR = ({videoVR}) => {
   }, [])
 
   if (videoVR) {
-    const videoUrl = `${process.env.NEXT_PUBLIC_CDN_URL}/${process.env.NEXT_PUBLIC_VR_VIDEOS}/${videoVR[process.env.NEXT_PUBLIC_VIDEO_SIZE]}`
+    const videoUrl = `${process.env.NEXT_PUBLIC_CDN_BASE_URL}/${process.env.NEXT_PUBLIC_CDN_ROOT_DIR}/${process.env.NEXT_PUBLIC_VR_VIDEOS}/${videoVR[process.env.NEXT_PUBLIC_VR_VIDEO_SIZE]}`
 
     return (
       <Grid container spacing={2} direction="column" >
