@@ -5,7 +5,7 @@ import { ImageMap } from '@qiuz/react-image-map';
 import { useState } from 'react'
 import Panorama from '../Panorama/index'
 import VideoVR from '../VideoVR/index'
-import { Chip, Container, Fab, Grid, Link } from '@mui/material'
+import { Chip, Container, Fab, Grid, Link, Skeleton } from '@mui/material'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import VisibilityIcon from '@mui/icons-material/Visibility'
@@ -116,12 +116,11 @@ const InteractiveImage = ({spot, handlerOnClose}) => {
                         <CloseIcon/>
                       </Fab>
                     </>
-                    <ImageMap
-                      className={styles['interactiveImage-image']}
-                      src={img}
-                      //map={mapArea}
-                      onMapClick={onMapClick}
-                    />
+                    {img ?
+                      <img className={styles['interactiveImage-image']}
+                        src={img}
+                      /> :
+                    <Skeleton variant="rectangular" width={210} height={250} className={styles['interactiveImage-image']}/> }
                   </Grid>
                   <Grid item>
                     <Grid container justifyContent="space-between" >
