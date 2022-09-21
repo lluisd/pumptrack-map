@@ -1,4 +1,4 @@
-import { MapContainer, Marker, Popup, TileLayer, ZoomControl } from 'react-leaflet'
+import { MapContainer, Marker, Popup, TileLayer, Tooltip, ZoomControl } from 'react-leaflet'
 import React from 'react'
 import L from 'leaflet'
 import { v4 as uuidv4 } from 'uuid'
@@ -6,7 +6,6 @@ import 'leaflet/dist/leaflet.css'
 import styles from './Map.module.css'
 import { Menu } from '../Menu/index'
 import FilterControl from '../Controls/FilterControl/FilterControl'
-import { Fab } from '@mui/material'
 
 const Map = ({center, zoom, markers, maxBounds, onClick}) => {
   const [markersList, setMarkersList] = React.useState(markers)
@@ -19,13 +18,14 @@ const Map = ({center, zoom, markers, maxBounds, onClick}) => {
     setMarkersList(filteredMarkers)
   }
 
+
   return (
     <MapContainer center={center} zoom={zoom} scrollWheelZoom={true} style={{height: "100vh", width: "100wh"}} minZoom={9} maxBounds={maxBounds}
     className={styles.map} zoomControl={false}>
       <div className="leaflet-top leaflet-left">
-        <div className="leaflet-control">
-          <Menu/>
-        </div>
+        {/*<div className="leaflet-control">*/}
+        {/*  <Menu/>*/}
+        {/*</div>*/}
         <div className={`leaflet-control ${styles.control}`}>
           <FilterControl handleFilterChange={filterByBrand}/>
         </div>
@@ -42,15 +42,16 @@ const Map = ({center, zoom, markers, maxBounds, onClick}) => {
                   eventHandlers={{
                     click: () => onClick(marker)
                   }}>
+            <Tooltip direction="bottom" offset={[0, 10]} opacity={1} permanent className={styles.tooltip}
+                    >
+              {marker.id}
+            </Tooltip>
           </Marker>
         )
       })}
+
     </MapContainer>
   )
-}
-
-function filterByBrand (brand) {
-
 }
 
 function getIcon(marker) {

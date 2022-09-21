@@ -5,11 +5,14 @@ import { ImageMap } from '@qiuz/react-image-map';
 import { useState } from 'react'
 import Panorama from '../Panorama/index'
 import VideoVR from '../VideoVR/index'
-import { Grid } from '@mui/material'
+import { Chip, Container, Fab, Grid, Link } from '@mui/material'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import VisibilityIcon from '@mui/icons-material/Visibility'
 import useSWR from 'swr'
+import NavigationIcon from '@mui/icons-material/Navigation';
+import CloseIcon from '@mui/icons-material/Close';
+import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
@@ -67,28 +70,26 @@ const InteractiveImage = ({spot, handlerOnClose}) => {
     setVideoVR(pumptrack.video)
   }
 
+  const getStatus = (spot) => {
+    let status = 'error'
+    if (spot.hasOpeningHours) {
+      status = 'warning'
+    } else {
+      status = 'success'
+    }
+    return status
+  }
+
   return (
     <Grid container spacing={2} direction="column" >
-      <Grid item sx={{ mt: 2 }}>
-        <Grid container direction="row">
+      {videoVR && <Grid item sx={{ mt: 2 }}>
+         <Grid container direction="row">
           <Grid item xs={2}>
             <Box display="flex" justifyContent="flex-start" sx={{ ml: 4 }}>
               {(panorama || videoVR) && <Button variant="text"  onClick={handlerBack}>Back</Button>}
             </Box>
           </Grid>
           <Grid item xs={8}>
-            <Grid container direction="row" justifyContent="center">
-              <Grid item>
-                <Typography id="modal-modal-title" variant="h6" component="h2" align="center">
-                  {pumptrack && pumptrack.name}
-                </Typography>
-              </Grid>
-              <Grid item>
-                <Box display="flex" justifyContent="flex-start" sx={{ ml: 4 }}>
-                  {!videoVR && pumptrack.video && <Button variant="outlined" onClick={handlerShowVideo}>VR video</Button>}
-                </Box>
-              </Grid>
-            </Grid>
           </Grid>
           <Grid item xs={2}>
             <Box display="flex" justifyContent="flex-end" sx={{ mr: 4 }}>
@@ -96,21 +97,72 @@ const InteractiveImage = ({spot, handlerOnClose}) => {
             </Box>
           </Grid>
         </Grid>
-      </Grid>
+      </Grid> }
       <Grid item>
         <Box
           display="flex"
           justifyContent="center"
           alignItems="center">
-         <Panorama panorama={panorama} />
-         <VideoVR videoVR={videoVR}/>
+          {videoVR && <VideoVR videoVR={videoVR}/>}
           {!panorama && !videoVR &&
-                <ImageMap
-                  className={styles['interactiveImage-image']}
-                  src={img}
-                  map={mapArea}
-                  onMapClick={onMapClick}
-                />
+                <Grid container direction="column" style={{ flexWrap: 'nowrap' }}>
+                  <Grid item className={styles.imageContainer}>
+                    <>
+                    {pumptrack.video && <Fab color="primary" size="small" variant="extended"  onClick={handlerShowVideo} className={styles.playButton}>
+                        <PlayArrowIcon sx={{ mr: 1 }} />
+                        Play VR
+                      </Fab> }
+                      <Fab color="primary" size="small"  aria-label="close"  onClick={handlerOnClose} className={styles.closeButton} >
+                        <CloseIcon/>
+                      </Fab>
+                    </>
+                    <ImageMap
+                      className={styles['interactiveImage-image']}
+                      src={img}
+                      //map={mapArea}
+                      onMapClick={onMapClick}
+                    />
+                  </Grid>
+                  <Grid item>
+                    <Grid container justifyContent="space-between" >
+                      <Grid item xs={6} md={8} className={styles.trackInfo} p={2}>
+                        <Typography variant="h6" gutterBottom>
+                          {spot.name}
+                        </Typography>
+                        <Typography variant="subtitle1" gutterBottom>
+                        Province: {spot.province}
+                        </Typography>
+                        <Typography variant="subtitle1" gutterBottom>
+                          {spot.length ? `Length: ${spot.length} meters` : ''}
+                        </Typography>
+                      </Grid>
+                      <Grid item  p={2} justify="flex-end" >
+                        <Typography variant="subtitle1" gutterBottom>
+                          <Grid container direction="row" alignItems="center" spacing={1}>
+                            <Grid item>
+                              Status:
+                            </Grid>
+                            <Grid item>
+                              <Chip label={spot.status} color={getStatus(spot)}  />
+                            </Grid>
+                          </Grid>
+                        </Typography>
+                        <Typography variant="subtitle1" gutterBottom>
+                          <Link href={spot.gmapsLink} rel="noreferrer" target="_blank">
+                            <Grid container direction="row" alignItems="center" spacing={1}>
+                              <Grid item>
+                                <NavigationIcon size="small" />
+                              </Grid>
+                              <Grid item>
+                                Google maps
+                              </Grid>
+                            </Grid>
+                          </Link>
+                        </Typography>
+                      </Grid>
+                    </Grid>
+                  </Grid>
+                </Grid>
           }
         </Box>
       </Grid>

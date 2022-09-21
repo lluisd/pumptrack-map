@@ -7,6 +7,7 @@ import Modal from '@mui/material/Modal'
 import Box from '@mui/material/Box'
 import styles from "../styles/Home.module.css"
 import Fade from '@mui/material/Fade'
+import ClickAwayListener from '@mui/base/ClickAwayListener';
 
 function MapPage({ allSpotsData }) {
   const center = [41.979401, 2.821426]
@@ -19,6 +20,7 @@ function MapPage({ allSpotsData }) {
     setPumptrack(pumptrack)
   }
   const modalHandleClose = () => {
+    console.log('handle close')
     setMarkerSelected(false)
     setTimeout(() => {
       setPumptrack(null)
@@ -28,11 +30,11 @@ function MapPage({ allSpotsData }) {
   return (
     <Layout>
       <Map center={center} zoom={mapZoom} markers={allSpotsData.spots} maxBounds={bounds} onClick={handleSelectedPumptrack} />
-        <Fade in={markerSelected} timeout={1000} >
-          <Box className={styles.contentbox} >
-            {pumptrack && <InteractiveImage spot={pumptrack} handlerOnClose={modalHandleClose}/>}
-          </Box>
-        </Fade>
+       <Fade in={markerSelected} timeout={1000} >
+        <Box className={styles.contentbox} >
+          {pumptrack && <InteractiveImage spot={pumptrack} handlerOnClose={modalHandleClose}/>}
+        </Box>
+      </Fade>
     </Layout>
   )
 }
