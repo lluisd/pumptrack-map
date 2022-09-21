@@ -56,7 +56,8 @@ export async function getStaticProps() {
   return {
     props: {
       allSpotsData
-    }
+    },
+    revalidate: 60
   }
 }
 
