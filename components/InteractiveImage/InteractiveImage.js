@@ -1,9 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import styles from './InteractiveImage.module.css';
-import { ImageMap } from '@qiuz/react-image-map';
 import { useState } from 'react'
-import Panorama from '../Panorama/index'
 import VideoVR from '../VideoVR/index'
 import { Chip, Container, Fab, Grid, Link, Skeleton } from '@mui/material'
 import Button from '@mui/material/Button'
@@ -13,10 +11,12 @@ import useSWR from 'swr'
 import NavigationIcon from '@mui/icons-material/Navigation';
 import CloseIcon from '@mui/icons-material/Close';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
+import Image from 'next/image';
 
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
-const InteractiveImage = ({spot, handlerOnClose}) => {
+const InteractiveImage = ({spot, blurImages, handlerOnClose}) => {
+  const [imageIsLoaded, setImageIsLoaded] = useState (false)
   const [panorama, setPanorama] = useState(null)
   const [videoVR, setVideoVR] = useState(null)
   const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_CDN_BASE_URL}/${process.env.NEXT_PUBLIC_CDN_ROOT_DIR}/${process.env.NEXT_PUBLIC_DATA}/${spot.id}.json`, fetcher)
@@ -80,6 +80,11 @@ const InteractiveImage = ({spot, handlerOnClose}) => {
     return status
   }
 
+  const getBlurImage = (spot) => {
+    const blurImage = blurImages.find(bi => bi.id === spot.id)
+    return blurImage.blurDataURL
+  }
+
   return (
     <Grid container spacing={2} direction="column" >
       {videoVR && <Grid item sx={{ mt: 2 }}>
@@ -116,12 +121,15 @@ const InteractiveImage = ({spot, handlerOnClose}) => {
                         <CloseIcon/>
                       </Fab>
                     </>
-                    {img ?
-                      <img className={styles['interactiveImage-image']}
-                        src={img}
-                      /> :
-                    <Skeleton variant="rectangular" width={210} height={250} className={styles['interactiveImage-image']}/> }
-                  </Grid>
+                    <Image
+                      onLoadingComplete={() => setImageIsLoaded(true)}
+                      width="1920"
+                      height="1080"
+                      src={img}
+                      layout="responsive"
+                      placeholder="blur"
+                      blurDataURL={getBlurImage(spot)}/>
+                    </Grid>
                   <Grid item>
                     <Grid container justifyContent="space-between" >
                       <Grid item xs={6} md={8} className={styles.trackInfo} p={2}>

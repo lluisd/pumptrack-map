@@ -1,6 +1,13 @@
-/** @type {import('next').NextConfig} */
+const { withPlaiceholder } = require("@plaiceholder/next");
+
+/**
+ * @type {import('next').NextConfig}
+ */
 const nextConfig = {
   reactStrictMode: true,
+  images: {
+    domains: ['localhost'],
+  }
 }
 
-module.exports = nextConfig
+module.exports = withPlaiceholder(nextConfig)
