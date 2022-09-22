@@ -19,7 +19,6 @@ function MapPage({ allSpotsData, blurImages }) {
     setPumptrack(pumptrack)
   }
   const modalHandleClose = () => {
-    console.log('handle close')
     setMarkerSelected(false)
     setTimeout(() => {
       setPumptrack(null)

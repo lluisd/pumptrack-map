@@ -6,7 +6,6 @@ import VideoVR from '../VideoVR/index'
 import { Chip, Container, Fab, Grid, Link, Skeleton } from '@mui/material'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import VisibilityIcon from '@mui/icons-material/Visibility'
 import useSWR from 'swr'
 import NavigationIcon from '@mui/icons-material/Navigation';
 import CloseIcon from '@mui/icons-material/Close';
@@ -16,41 +15,11 @@ import Image from 'next/image';
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
 const InteractiveImage = ({spot, blurImages, handlerOnClose}) => {
-  const [imageIsLoaded, setImageIsLoaded] = useState (false)
   const [panorama, setPanorama] = useState(null)
   const [videoVR, setVideoVR] = useState(null)
-  const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_CDN_BASE_URL}/${process.env.NEXT_PUBLIC_CDN_ROOT_DIR}/${process.env.NEXT_PUBLIC_DATA}/${spot.id}.json`, fetcher)
-  let pumptrack = { panoramas: [] }
-
-  if (data) pumptrack = data
+  //const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_CDN_BASE_URL}/${process.env.NEXT_PUBLIC_CDN_ROOT_DIR}/${process.env.NEXT_PUBLIC_DATA}/${spot.id}.json`, fetcher)
 
   const img = `${process.env.NEXT_PUBLIC_CDN_BASE_URL}/${process.env.NEXT_PUBLIC_CDN_ROOT_DIR}/${process.env.NEXT_PUBLIC_IMAGES}/${spot.id}.jpg`
-
-  const mapArea = pumptrack.panoramas.map(map => {
-    return {
-      width: map.imageArea.width,
-      height: map.imageArea.height,
-      left: map.imageArea.left,
-      top: map.imageArea.top,
-      style: { background: 'rgba(255, 0, 0, 0.5)',borderRadius: "50%",
-      display: "inline-block" , border: "1px solid black"},
-      render: (area, index) => (
-        <span
-        style={{
-          display: 'flex',
-          alignItems: 'center',
-          justifyContent: 'center',
-          height: '100%'
-        }}
-        ><VisibilityIcon sx={{ color: "white" }} fontSize="large"/></span>
-      ),
-    }
-  })
-
-  const onMapClick = (area, index) => {
-    removeVideoVR()
-    setPanorama(pumptrack.panoramas[index])
-  }
 
   const removePanorama = () => {
     setPanorama(null)
@@ -67,7 +36,7 @@ const InteractiveImage = ({spot, blurImages, handlerOnClose}) => {
 
   const handlerShowVideo = () => {
     removePanorama()
-    setVideoVR(pumptrack.video)
+    setVideoVR(spot.video)
   }
 
   const getStatus = (spot) => {
@@ -113,7 +82,7 @@ const InteractiveImage = ({spot, blurImages, handlerOnClose}) => {
                 <Grid container direction="column" style={{ flexWrap: 'nowrap' }}>
                   <Grid item className={styles.imageContainer}>
                     <>
-                    {pumptrack.video && <Fab color="primary" size="small" variant="extended"  onClick={handlerShowVideo} className={styles.playButton}>
+                    {spot.video && <Fab color="primary" size="small" variant="extended"  onClick={handlerShowVideo} className={styles.playButton}>
                         <PlayArrowIcon sx={{ mr: 1 }} />
                         Play VR
                       </Fab> }
@@ -122,7 +91,6 @@ const InteractiveImage = ({spot, blurImages, handlerOnClose}) => {
                       </Fab>
                     </>
                     <Image
-                      onLoadingComplete={() => setImageIsLoaded(true)}
                       width="1920"
                       height="1080"
                       src={img}

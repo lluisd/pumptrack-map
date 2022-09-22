@@ -10,10 +10,10 @@ import FilterControl from '../Controls/FilterControl/FilterControl'
 const Map = ({center, zoom, markers, maxBounds, onClick}) => {
   const [markersList, setMarkersList] = React.useState(markers)
 
-  const filterByBrand = (brand) => {
+  const filterByHasVideo = (option) => {
     let filteredMarkers = markers
-    if (brand !== 'all') {
-      filteredMarkers = markers.filter(m => m.brand === brand)
+    if (option !== 'all') {
+      filteredMarkers = markers.filter(m => !!m.video)
     }
     setMarkersList(filteredMarkers)
   }
@@ -27,7 +27,7 @@ const Map = ({center, zoom, markers, maxBounds, onClick}) => {
         {/*  <Menu/>*/}
         {/*</div>*/}
         <div className={`leaflet-control ${styles.control}`}>
-          <FilterControl handleFilterChange={filterByBrand}/>
+          <FilterControl handleFilterChange={filterByHasVideo}/>
         </div>
       </div>
 
@@ -42,8 +42,7 @@ const Map = ({center, zoom, markers, maxBounds, onClick}) => {
                   eventHandlers={{
                     click: () => onClick(marker)
                   }}>
-            <Tooltip direction="bottom" offset={[0, 10]} opacity={1} permanent className={styles.tooltip}
-                    >
+            <Tooltip direction="bottom" offset={[0, 10]} opacity={1} permanent className={styles.tooltip}>
               {marker.id}
             </Tooltip>
           </Marker>
