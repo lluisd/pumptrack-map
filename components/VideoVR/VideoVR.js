@@ -48,7 +48,6 @@ const VideoVR = ({videoVR}) => {
           <a-assets>
             <video ref={videoEl} id="vrVideo" src={videoUrl} loop={false} playsInline crossOrigin="anonymous"   />
           </a-assets>
-          {/*<Entity primitive="a-image" id="playButton"  position="0 0 -7"></Entity>*/}
           <Entity primitive="a-camera">
             <Entity ref={textEl} position="0 0 -1.5"
                     text="align:center;
