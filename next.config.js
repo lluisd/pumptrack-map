@@ -6,7 +6,8 @@ const { withPlaiceholder } = require("@plaiceholder/next");
 const nextConfig = {
   reactStrictMode: true,
   images: {
-    domains: ['localhost'],
+    domains: ['localhost', 'pumptrack.azureedge.net'],
+    //disableStaticImages: true
   }
 }
 

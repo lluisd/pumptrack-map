@@ -47,7 +47,6 @@ const VideoVR = ({videoVR}) => {
         <Scene ref={sceneEl}  embedded  loading-screen="dotsColor: red; backgroundColor: black">
           <a-assets>
             <video ref={videoEl} id="vrVideo" src={videoUrl} loop={false} playsInline crossOrigin="anonymous"   />
-            <img id="buttonImg" src="https://cdn.glitch.com/a46c3f68-2f15-429d-af36-27cb89cd1d60%2Fic_play_circle_filled_black_36dp_2x.png?1518043219946"/>
           </a-assets>
           {/*<Entity primitive="a-image" id="playButton"  position="0 0 -7"></Entity>*/}
           <Entity primitive="a-camera">
