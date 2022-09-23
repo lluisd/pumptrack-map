@@ -7,6 +7,11 @@
   border-radius: 50%;
 }
 
+.map-icon-selected {
+  border-radius: 50%;
+  filter: brightness(125%);
+}
+
 .control {
   float: none;
   display: inline-block;

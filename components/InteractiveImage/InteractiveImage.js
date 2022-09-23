@@ -15,27 +15,20 @@ import Image from 'next/image';
 const fetcher = (url) => fetch(url).then((res) => res.json())
 
 const InteractiveImage = ({spot, blurImages, handlerOnClose}) => {
-  const [panorama, setPanorama] = useState(null)
   const [videoVR, setVideoVR] = useState(null)
   //const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_CDN_BASE_URL}/${process.env.NEXT_PUBLIC_CDN_ROOT_DIR}/${process.env.NEXT_PUBLIC_DATA}/${spot.id}.json`, fetcher)
 
   const img = `${process.env.NEXT_PUBLIC_CDN_BASE_URL}/${process.env.NEXT_PUBLIC_CDN_ROOT_DIR}/${process.env.NEXT_PUBLIC_IMAGES}/${spot.id}.jpg`
-
-  const removePanorama = () => {
-    setPanorama(null)
-  }
 
   const removeVideoVR = () => {
     setVideoVR(null)
   }
 
   const handlerBack = () => {
-    removePanorama()
     removeVideoVR()
   }
 
   const handlerShowVideo = () => {
-    removePanorama()
     setVideoVR(spot.video)
   }
 
@@ -60,7 +53,7 @@ const InteractiveImage = ({spot, blurImages, handlerOnClose}) => {
          <Grid container direction="row">
           <Grid item xs={2}>
             <Box display="flex" justifyContent="flex-start" sx={{ ml: 4 }}>
-              {(panorama || videoVR) && <Button variant="text"  onClick={handlerBack}>Back</Button>}
+              {videoVR && <Button variant="text"  onClick={handlerBack}>Back</Button>}
             </Box>
           </Grid>
           <Grid item xs={8}>
@@ -78,7 +71,7 @@ const InteractiveImage = ({spot, blurImages, handlerOnClose}) => {
           justifyContent="center"
           alignItems="center">
           {videoVR && <VideoVR videoVR={videoVR}/>}
-          {!panorama && !videoVR &&
+          {!videoVR &&
                 <Grid container direction="column" style={{ flexWrap: 'nowrap' }}>
                   <Grid item className={styles.imageContainer}>
                     <>

@@ -36,10 +36,11 @@ const Menu = () => {
 
   return (
     <>
-      <Fab color="primary" aria-label="menu"  onClick={toggleDrawer(true)}>
+      <Fab  aria-label="menu"  onClick={toggleDrawer(true)}>
         <MenuIcon />
       </Fab>
       <Drawer
+        className={styles.drawer}
         anchor='left'
         open={openMenu}
         onClose={toggleDrawer(false)}

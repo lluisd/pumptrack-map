@@ -6,3 +6,7 @@
   flex-shrink: 0;
   text-align: center;
 }
+
+.drawer {
+  z-index: 3000000;
+}

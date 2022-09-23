@@ -9,6 +9,7 @@ import FilterControl from '../Controls/FilterControl/FilterControl'
 
 const Map = ({center, zoom, markers, maxBounds, onClick}) => {
   const [markersList, setMarkersList] = React.useState(markers)
+  const [selectedMarker, setSelectedMarker] = React.useState(null)
 
   const filterByHasVideo = (option) => {
     let filteredMarkers = markers
@@ -16,6 +17,9 @@ const Map = ({center, zoom, markers, maxBounds, onClick}) => {
       filteredMarkers = markers.filter(m => !!m.video)
     }
     setMarkersList(filteredMarkers)
+  }
+  const setIcon = (marker) => {
+    setSelectedMarker(marker)
   }
 
 
@@ -38,9 +42,9 @@ const Map = ({center, zoom, markers, maxBounds, onClick}) => {
       <ZoomControl position="bottomright" />
       {markersList.map((marker) => {
         return  (
-          <Marker key={uuidv4()} position={marker.coordinates} icon={getIcon(marker)}
+          <Marker key={uuidv4()} position={marker.coordinates} icon={getIcon(marker, selectedMarker)}
                   eventHandlers={{
-                    click: () => onClick(marker)
+                    click: () => {onClick(marker); setIcon(marker)}
                   }}>
             <Tooltip direction="bottom" offset={[0, 10]} opacity={1} permanent className={styles.tooltip}>
               {marker.id}
@@ -53,17 +57,25 @@ const Map = ({center, zoom, markers, maxBounds, onClick}) => {
   )
 }
 
-function getIcon(marker) {
+function getIcon(marker, selectedMarker) {
   let iconFile = 'icon.svg'
+  let iconSize = [40, 40]
+  let className = styles['map-icon']
+
   switch (marker.brand) {
     case 'velosolutions':
       iconFile = 'icon-velo.svg'
   }
 
+  if (selectedMarker && marker.id === selectedMarker.id) {
+    className = styles['map-icon-selected']
+    iconSize = [50, 50]
+  }
+
   return L.icon({
     iconUrl: `/images/${iconFile}`,
-    iconSize: [40, 40],
-    className: styles['map-icon']
+    iconSize: iconSize,
+    className: className
   })
 }
 

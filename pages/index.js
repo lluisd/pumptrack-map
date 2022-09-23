@@ -7,16 +7,28 @@ import Box from '@mui/material/Box'
 import styles from "../styles/Home.module.css"
 import Fade from '@mui/material/Fade'
 import { getImagePlaceholders } from '../lib/placeholders'
+import { useRouter } from 'next/router'
 
 function MapPage({ allSpotsData, blurImages }) {
+  const router = useRouter()
+  const slug = router.query.slug || []
+
+  if (slug.length === 1) {
+    const pumptrackIdFromQuery = slug[0]
+    const requestedSpot = allSpotsData.spots.find(spot => spot.id === pumptrackIdFromQuery)
+    if (requestedSpot) {
+      handleSelectedPumptrack(requestedSpot)
+    }
+  }
+
   const center = [41.979401, 2.821426]
   const mapZoom = 10
   const bounds = [[42.27917879724292, 2.254910573201578],[41.62981728626594, 3.2354221997777097]]
   const [pumptrack, setPumptrack] = useState(null)
   const [markerSelected, setMarkerSelected] = useState(false)
-  function handleSelectedPumptrack (pumptrack) {
+  function handleSelectedPumptrack (selectedPumptrack) {
     setMarkerSelected(true)
-    setPumptrack(pumptrack)
+    setPumptrack(selectedPumptrack)
   }
   const modalHandleClose = () => {
     setMarkerSelected(false)
@@ -45,9 +57,9 @@ export async function getStaticProps() {
     props: {
       allSpotsData,
       blurImages
-    },
-    revalidate: 60
+    }
   }
 }
+
 
 export default MapPage
