@@ -2,7 +2,7 @@ import React, { useState, useDebugValue, useEffect } from 'react'
 import { getSortedSpotsData } from '../lib/spots'
 import Layout from '../components/Layout/Layout'
 import Map from '../components/Map'
-import { InteractiveImage } from '../components/InteractiveImage'
+import { SpotCard } from '../components/SpotCard'
 import Box from '@mui/material/Box'
 import styles from "../styles/Home.module.css"
 import Fade from '@mui/material/Fade'
@@ -45,7 +45,7 @@ function MapPage({ allSpotsData, blurImages }) {
       <Map center={center} zoom={mapZoom} markers={allSpotsData.spots} maxBounds={bounds} onClick={handleSelectedPumptrack} />
        <Fade in={markerSelected} timeout={1000} >
         <Box className={styles.contentbox} >
-          {pumptrack && <InteractiveImage spot={pumptrack} blurImages={blurImages} handlerOnClose={modalHandleClose}/>}
+          {pumptrack && <SpotCard spot={pumptrack} blurImages={blurImages} handlerOnClose={modalHandleClose}/>}
         </Box>
       </Fade>
     </Layout>

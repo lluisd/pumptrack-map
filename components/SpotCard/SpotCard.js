@@ -1,22 +1,18 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
-import styles from './InteractiveImage.module.css';
+import styles from './SpotCard.module.css';
 import { useState } from 'react'
 import VideoVR from '../VideoVR/index'
 import { Chip, Container, Fab, Grid, Link, Skeleton } from '@mui/material'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
-import useSWR from 'swr'
 import NavigationIcon from '@mui/icons-material/Navigation';
 import CloseIcon from '@mui/icons-material/Close';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import Image from 'next/image';
 
-const fetcher = (url) => fetch(url).then((res) => res.json())
-
-const InteractiveImage = ({spot, blurImages, handlerOnClose}) => {
+const SpotCard = ({spot, blurImages, handlerOnClose}) => {
   const [videoVR, setVideoVR] = useState(null)
-  //const { data, error } = useSWR(`${process.env.NEXT_PUBLIC_CDN_BASE_URL}/${process.env.NEXT_PUBLIC_CDN_ROOT_DIR}/${process.env.NEXT_PUBLIC_DATA}/${spot.id}.json`, fetcher)
 
   const img = `${process.env.NEXT_PUBLIC_CDN_BASE_URL}/${process.env.NEXT_PUBLIC_CDN_ROOT_DIR}/${process.env.NEXT_PUBLIC_IMAGES}/${spot.id}.jpg`
 
@@ -48,7 +44,7 @@ const InteractiveImage = ({spot, blurImages, handlerOnClose}) => {
   }
 
   return (
-    <Grid container spacing={2} direction="column" >
+    <Grid container spacing={2} direction="column"  style={{ flexWrap: 'nowrap' }}>
       {videoVR && <Grid item sx={{ mt: 2 }}>
          <Grid container direction="row">
           <Grid item xs={2}>
@@ -73,7 +69,7 @@ const InteractiveImage = ({spot, blurImages, handlerOnClose}) => {
           {videoVR && <VideoVR videoVR={videoVR}/>}
           {!videoVR &&
                 <Grid container direction="column" style={{ flexWrap: 'nowrap' }}>
-                  <Grid item className={styles.imageContainer}>
+                  <Grid item>
                     <>
                     {spot.video && <Fab color="primary" size="small" variant="extended"  onClick={handlerShowVideo} className={styles.playButton}>
                         <PlayArrowIcon sx={{ mr: 1 }} />
@@ -138,4 +134,4 @@ const InteractiveImage = ({spot, blurImages, handlerOnClose}) => {
   )
 }
 
-export default InteractiveImage
+export default SpotCard
