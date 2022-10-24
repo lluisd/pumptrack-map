@@ -9,6 +9,8 @@ import Fade from '@mui/material/Fade'
 import { getImagePlaceholders } from '../lib/placeholders'
 import { useRouter } from 'next/router'
 
+let fadingSpotTimeout = undefined
+
 function MapPage({ allSpotsData, blurImages }) {
   const router = useRouter()
   const slug = router.query.slug || []
@@ -31,11 +33,15 @@ function MapPage({ allSpotsData, blurImages }) {
   function handleSelectedPumptrack (selectedPumptrack) {
     router.push(`/${selectedPumptrack.id}`, `/${selectedPumptrack.id}`, { shallow: true })
     setMarkerSelected(true)
+    if (typeof fadingSpotTimeout === 'number') {
+      clearTimeout(fadingSpotTimeout)
+    }
     setPumptrack(selectedPumptrack)
   }
   const modalHandleClose = () => {
     setMarkerSelected(false)
-    setTimeout(() => {
+    fadingSpotTimeout = setTimeout(() => {
+      fadingSpotTimeout = undefined
       setPumptrack(null)
     }, 1000)
   }
