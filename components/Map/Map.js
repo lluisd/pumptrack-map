@@ -4,8 +4,9 @@ import L from 'leaflet'
 import { v4 as uuidv4 } from 'uuid'
 import 'leaflet/dist/leaflet.css'
 import styles from './Map.module.css'
-import { Menu } from '../Menu/index'
 import FilterControl from '../Controls/FilterControl/FilterControl'
+import icon from '../../public/images/icon.svg'
+import veloIcon from '../../public/images/icon-velo.svg'
 
 const Map = ({center, zoom, markers, maxBounds, onClick}) => {
   const [markersList, setMarkersList] = React.useState(markers)
@@ -27,9 +28,6 @@ const Map = ({center, zoom, markers, maxBounds, onClick}) => {
     <MapContainer center={center} zoom={zoom} scrollWheelZoom={true} style={{height: "100vh", width: "100wh"}} minZoom={9} maxBounds={maxBounds}
     className={styles.map} zoomControl={false}>
       <div className="leaflet-top leaflet-left">
-        {/*<div className="leaflet-control">*/}
-        {/*  <Menu/>*/}
-        {/*</div>*/}
         <div className={`leaflet-control ${styles.control}`}>
           <FilterControl handleFilterChange={filterByHasVideo}/>
         </div>
@@ -58,13 +56,13 @@ const Map = ({center, zoom, markers, maxBounds, onClick}) => {
 }
 
 function getIcon(marker, selectedMarker) {
-  let iconFile = 'icon.svg'
+  let iconFile = icon
   let iconSize = [40, 40]
   let className = styles['map-icon']
 
   switch (marker.brand) {
     case 'velosolutions':
-      iconFile = 'icon-velo.svg'
+      iconFile = veloIcon
   }
 
   if (selectedMarker && marker.id === selectedMarker.id) {
@@ -73,7 +71,7 @@ function getIcon(marker, selectedMarker) {
   }
 
   return L.icon({
-    iconUrl: `/images/${iconFile}`,
+    iconUrl: iconFile.src,
     iconSize: iconSize,
     className: className
   })
