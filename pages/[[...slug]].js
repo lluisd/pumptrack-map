@@ -48,12 +48,12 @@ function MapPage({ allSpotsData, blurImages }) {
 
   return (
     <Layout>
-      <Map center={center} zoom={mapZoom} markers={allSpotsData.spots} maxBounds={bounds} onClick={handleSelectedPumptrack} />
-       <Fade in={markerSelected} timeout={1000} >
-        <Box className={styles.contentbox} >
-          {pumptrack && <SpotCard spot={pumptrack} blurImages={blurImages} handlerOnClose={modalHandleClose}/>}
-        </Box>
-      </Fade>
+        <Map center={center} zoom={mapZoom} markers={allSpotsData.spots} maxBounds={bounds} onClick={handleSelectedPumptrack} />
+        <Fade in={markerSelected} timeout={1000} >
+          <Box className={styles.contentbox} >
+            {pumptrack && <SpotCard spot={pumptrack} blurImages={blurImages} handlerOnClose={modalHandleClose}/>}
+          </Box>
+        </Fade>
     </Layout>
   )
 }

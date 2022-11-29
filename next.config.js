@@ -7,6 +7,7 @@ const nextConfig = {
   reactStrictMode: true,
   images: {
     dangerouslyAllowSVG: true,
+    reactStrictMode: true,
     minimumCacheTTL: 60,
     domains: ['localhost', 'pumptrack.azureedge.net'],
     //disableStaticImages: true
