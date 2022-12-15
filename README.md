@@ -17,6 +17,7 @@ NEXT_PUBLIC_VR_VIDEO_SIZE //small, medium or high
 
 ### Assets/CDN structure
 
+```bash
 ├── spots (NEXT_PUBLIC_CDN_ROOT_DIR)
 │   ├── 360videos (NEXT_PUBLIC_VR_VIDEOS)
 │   │   ├── albons_h.mp4
@@ -28,6 +29,7 @@ NEXT_PUBLIC_VR_VIDEO_SIZE //small, medium or high
 │   │   └── cassa.jpg
 │   └── data (NEXT_PUBLIC_DATA)
 │       └── spots.json
+```
 
 ## Assets
 Assets used for data, images, 360images (VR images) and 360videos (VR videos) can be found here:
