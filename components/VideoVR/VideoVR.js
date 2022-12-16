@@ -30,7 +30,7 @@ const VideoVR = ({videoVR}) => {
       })
     }
   }, [])
-  const videoUrl = `${process.env.NEXT_PUBLIC_CDN_BASE_URL}/${process.env.NEXT_PUBLIC_CDN_ROOT_DIR}/${process.env.NEXT_PUBLIC_VR_VIDEOS}/${videoVR[process.env.NEXT_PUBLIC_VR_VIDEO_SIZE]}`
+  const videoUrl = `${process.env.NEXT_PUBLIC_CDN_BASE_URL}/${process.env.NEXT_PUBLIC_CDN_ROOT_DIR}/${process.env.NEXT_PUBLIC_VR_VIDEOS}/${videoVR}`
 
   const playVideo = (video, loaded, clicked) => {
     if(loaded && clicked && video)  {

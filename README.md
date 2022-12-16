@@ -12,7 +12,6 @@ NEXT_PUBLIC_CDN_ROOT_DIR //root folder of your CDN
 NEXT_PUBLIC_DATA //folder inside CDN that contains specific pumptracks json files and spots.json
 NEXT_PUBLIC_IMAGES //folder inside CDN that contains pumptrack map images
 NEXT_PUBLIC_VR_VIDEOS //folder inside CDN that contains 360 pumptrack videos
-NEXT_PUBLIC_VR_VIDEO_SIZE //small, medium or high
 ```
 
 ### Assets/CDN structure
@@ -20,9 +19,9 @@ NEXT_PUBLIC_VR_VIDEO_SIZE //small, medium or high
 ```bash
 ├── spots (NEXT_PUBLIC_CDN_ROOT_DIR)
 │   ├── 360videos (NEXT_PUBLIC_VR_VIDEOS)
-│   │   ├── albons_h.mp4
+│   │   ├── albons.mp4
 │   │   ├── ...
-│   │   └── cassa_h.mp4
+│   │   └── cassa.mp4
 │   ├── images (NEXT_PUBLIC_IMAGES)
 │   │   ├── albons.jpg
 │   │   ├── ...
@@ -32,7 +31,7 @@ NEXT_PUBLIC_VR_VIDEO_SIZE //small, medium or high
 ```
 
 ## Assets
-Assets used for data, images, 360images (VR images) and 360videos (VR videos) can be found here:
+Assets used for data, images and 360videos (VR videos) can be found here:
 https://github.com/lluisd/pumptrack-map-assets
 
 ## Demo

@@ -1,5 +1,5 @@
 import { MapContainer, Marker, Popup, TileLayer, Tooltip, ZoomControl } from 'react-leaflet'
-import React from 'react'
+import React, { useMemo } from 'react'
 import L from 'leaflet'
 import { v4 as uuidv4 } from 'uuid'
 import 'leaflet/dist/leaflet.css'
@@ -23,6 +23,18 @@ const Map = ({center, zoom, markers, maxBounds, onClick}) => {
     setSelectedMarker(marker)
   }
 
+  const tooltip = useMemo(
+    () => (
+      <Tooltip key={uuidv4()} direction="bottom" offset={[0, 10]} opacity={1} permanent className={styles.tooltip}>
+        {marker.id}
+      </Tooltip>
+    )
+  )
+
+  const memoizedResult = useMemo(compute, dependencies);
+
+
+
 
   return (
     <MapContainer center={center} zoom={zoom} scrollWheelZoom={true} style={{height: "100vh", width: "100wh"}} minZoom={9} maxBounds={maxBounds}
@@ -44,7 +56,7 @@ const Map = ({center, zoom, markers, maxBounds, onClick}) => {
                   eventHandlers={{
                     click: () => {onClick(marker); setIcon(marker)}
                   }}>
-            <Tooltip direction="bottom" offset={[0, 10]} opacity={1} permanent className={styles.tooltip}>
+            <Tooltip key={uuidv4()} direction="bottom" offset={[0, 10]} opacity={1} permanent className={styles.tooltip}>
               {marker.id}
             </Tooltip>
           </Marker>
