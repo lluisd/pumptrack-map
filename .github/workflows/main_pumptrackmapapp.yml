@@ -8,6 +8,7 @@ on:
     branches:
       - main
   workflow_dispatch:
+  repository_dispatch:
 
 env:
   NEXT_PUBLIC_CDN_BASE_URL: https://pumptrack.azureedge.net
