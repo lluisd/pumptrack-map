@@ -12,6 +12,7 @@
 /.next/
 /out/
 /public/cdn/
+/public/spots/
 
 # production
 /build

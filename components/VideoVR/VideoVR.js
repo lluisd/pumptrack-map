@@ -1,12 +1,13 @@
 import { useRef, useEffect, useState } from 'react'
 import 'aframe'
 import {Entity, Scene} from 'aframe-react'
-import { Grid } from '@mui/material'
+import { Grid, Skeleton } from '@mui/material'
 import styles from './VideoVR.module.css'
 import Button from '@mui/material/Button'
 import * as React from 'react'
 
 const VideoVR = ({videoVR}) => {
+  const [loaded, setLoaded] = useState(false)
   const videoEl = useRef(null)
   const sceneEl = useRef(null)
   const textEl = useRef(null)
@@ -15,11 +16,14 @@ const VideoVR = ({videoVR}) => {
     let video = videoEl.current
     let scene = sceneEl.current
     let text = textEl.current
+    scene.el.style.display = 'none'
     let loaded = false
     let clicked = false
 
     if (scene) {
       scene.el.addEventListener('loaded', () => {
+        scene.el.style.display = 'block'
+        setLoaded(true)
         loaded = true
         playVideo(video, loaded, clicked)
       })
@@ -42,8 +46,9 @@ const VideoVR = ({videoVR}) => {
   }
 
   return (
-    <Grid container spacing={2} direction="column" >
+    <Grid container spacing={0} direction="column" >
       <Grid item className={styles.videoVR}>
+        { loaded ? '' :  <Skeleton variant="rectangular" width={600} height={400} />}
         <Scene ref={sceneEl}  embedded  loading-screen="dotsColor: red; backgroundColor: black">
           <a-assets>
             <video ref={videoEl} id="vrVideo" src={videoUrl} loop={false} playsInline crossOrigin="anonymous"   />
@@ -57,7 +62,6 @@ const VideoVR = ({videoVR}) => {
                 value: Click or tap to start video"></Entity>
           </Entity>
           <Entity id="video" primitive="a-videosphere" src="#vrVideo" play-on-click rotation="0 -85 0"/>
-
         </Scene>
       </Grid>
     </Grid>
