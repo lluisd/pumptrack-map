@@ -1,7 +1,7 @@
 import * as React from 'react';
 import Box from '@mui/material/Box';
 import styles from './SpotCard.module.css';
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
 import VideoVR from '../VideoVR/index'
 import { Chip, Container, Fab, Grid, Link, Skeleton } from '@mui/material'
 import Button from '@mui/material/Button'
@@ -18,6 +18,11 @@ const SpotCard = ({spot, blurImages, handlerOnClose}) => {
   const [videoVR, setVideoVR] = useState(null)
 
   const img = `${process.env.NEXT_PUBLIC_CDN_BASE_URL}/${process.env.NEXT_PUBLIC_CDN_ROOT_DIR}/${process.env.NEXT_PUBLIC_IMAGES}/${spot.id}.jpg`
+
+  useEffect(() => {
+    removePanorama()
+    removeVideoVR()
+  }, [spot])
 
   const removePanorama = () => {
     setPanorama(null)

@@ -13,6 +13,10 @@ const VideoVR = ({videoVR}) => {
   const textEl = useRef(null)
 
   useEffect(() => {
+    setLoaded(false)
+  }, [videoVR])
+
+  useEffect(() => {
     let video = videoEl.current
     let scene = sceneEl.current
     let text = textEl.current
@@ -51,7 +55,7 @@ const VideoVR = ({videoVR}) => {
         { loaded ? '' :  <Skeleton variant="rectangular" width={600} height={400} />}
         <Scene ref={sceneEl}  embedded  loading-screen="dotsColor: red; backgroundColor: black">
           <a-assets>
-            <video ref={videoEl} id="vrVideo" src={videoUrl} loop={false} playsInline crossOrigin="anonymous"   />
+            <video preload="none" ref={videoEl} id="vrVideo" src={videoUrl} loop={false} playsInline crossOrigin="anonymous"   />
           </a-assets>
           <Entity primitive="a-camera">
             <Entity ref={textEl} position="0 0 -1.5"
