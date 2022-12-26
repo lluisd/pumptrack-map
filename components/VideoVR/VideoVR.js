@@ -3,7 +3,6 @@ import 'aframe'
 import {Entity, Scene} from 'aframe-react'
 import { Grid, Skeleton } from '@mui/material'
 import styles from './VideoVR.module.css'
-import Button from '@mui/material/Button'
 import * as React from 'react'
 
 const VideoVR = ({videoVR}) => {
@@ -52,8 +51,8 @@ const VideoVR = ({videoVR}) => {
   return (
     <Grid container spacing={0} direction="column" >
       <Grid item className={styles.videoVR}>
-        { loaded ? '' :  <Skeleton variant="rectangular" width={600} height={400} />}
-        <Scene ref={sceneEl}  embedded  loading-screen="dotsColor: red; backgroundColor: black">
+        { loaded ? '' : <Skeleton variant="rectangular" width={600} height={400} animation="wave" />}
+        <Scene ref={sceneEl} embedded  loading-screen="dotsColor: red; backgroundColor: black">
           <a-assets>
             <video preload="none" ref={videoEl} id="vrVideo" src={videoUrl} loop={false} playsInline crossOrigin="anonymous"   />
           </a-assets>
