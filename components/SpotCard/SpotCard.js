@@ -72,6 +72,11 @@ const SpotCard = ({spot, blurImages, handlerOnClose}) => {
             </Box>
           </Grid>
           <Grid item xs={8}>
+            <Box display="flex" justifyContent="center">
+              <Typography variant="h6" gutterBottom>
+                {spot.name}
+              </Typography>
+            </Box>
           </Grid>
           <Grid item xs={2}>
             <Box display="flex" justifyContent="flex-end" sx={{ mr: 4 }}>
@@ -94,7 +99,7 @@ const SpotCard = ({spot, blurImages, handlerOnClose}) => {
                       <Box className={styles.playButton} sx={{ '& > :not(style)': { m: 1 } }}>
                         {spot.video && <Fab color="primary" size="small" variant="extended"  onClick={handlerShowVideo} >
                           <PlayArrowIcon sx={{ mr: 1 }} />
-                          Play VR
+                          Play
                         </Fab> }
                         {spot.panorama && <Fab color="primary" size="small" onClick={handlerShowPanorama}>
                           <ThreeDRotationIcon />
