@@ -7,6 +7,7 @@ import { Chip, Container, Fab, Grid, Link, Skeleton } from '@mui/material'
 import Button from '@mui/material/Button'
 import Typography from '@mui/material/Typography'
 import NavigationIcon from '@mui/icons-material/Navigation';
+import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import CloseIcon from '@mui/icons-material/Close';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import Image from 'next/image';
@@ -83,8 +84,8 @@ const SpotCard = ({spot, blurImages, handlerOnClose}) => {
           </Grid>
           <Grid item xs={2}>
             <Box display="flex" justifyContent="flex-end" sx={{ mr: 4 }}>
-              <Fab size="small"  aria-label="close"  onClick={handlerOnClose} className={styles.closeButton} >
-                <CloseIcon/>
+              <Fab  size="small"  aria-label="close"  onClick={handlerOnClose} className={styles.closeButton} >
+                <CloseIcon />
               </Fab>
             </Box>
           </Grid>
@@ -111,7 +112,7 @@ const SpotCard = ({spot, blurImages, handlerOnClose}) => {
                         </Fab> }
                       </Box>
                       <Fab size="small"  aria-label="close"  onClick={handlerOnClose} className={styles.closeButton} >
-                        <CloseIcon/>
+                        <CloseIcon  />
                       </Fab>
                     </>
                     <Image
@@ -147,7 +148,7 @@ const SpotCard = ({spot, blurImages, handlerOnClose}) => {
                           </Grid>
                         </Typography>
                         <Typography variant="subtitle1" gutterBottom>
-                          <Link href={spot.gmapsLink} rel="noreferrer" target="_blank">
+                          <Link href={spot.gmapsLink} rel="noreferrer" target="_blank" color="secondary">
                             <Grid container direction="row" alignItems="center" spacing={1}>
                               <Grid item>
                                 <NavigationIcon size="small" />
