@@ -36,7 +36,7 @@ const Menu = () => {
 
   return (
     <>
-      <Fab  aria-label="menu"  onClick={toggleDrawer(true)}>
+      <Fab  aria-label="menu" color="primary"  onClick={toggleDrawer(true)}>
         <MenuIcon />
       </Fab>
       <Drawer

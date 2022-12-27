@@ -34,13 +34,13 @@ const Map = ({center, zoom, markers, maxBounds, onClick}) => {
       </div>
       <div className="leaflet-bottom leaflet-left">
         <div className="leaflet-control">
-          {/*<Menu/>*/}
+          <Menu/>
         </div>
       </div>
 
       <TileLayer
-        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://api.mapbox.com/styles/v1/mapbox/streets-v11/tiles/{z}/{x}/{y}?access_token=pk.eyJ1IjoibGx1aXNkIiwiYSI6ImNranVsYnl3dDAwMWsybmxqdnV0aW1hbGwifQ.4uRoLJFUR6nnFLng4hLkWQ"
+        attribution='ap tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL.'
+        url="https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png"
       />
       <ZoomControl position="bottomright" />
       {markersList.map((marker) => {

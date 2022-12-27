@@ -5,7 +5,6 @@ const { withPlaiceholder } = require("@plaiceholder/next");
  */
 const nextConfig = {
   reactStrictMode: true,
-  concurrentFeatures: true,
   images: {
     dangerouslyAllowSVG: true,
     reactStrictMode: true,
