@@ -7,6 +7,7 @@ import styles from './Map.module.css'
 import FilterControl from '../Controls/FilterControl/FilterControl'
 import icon from '../../public/images/icon.svg'
 import veloIcon from '../../public/images/icon-velo.svg'
+import { Menu } from '../Menu'
 
 const Map = ({center, zoom, markers, maxBounds, onClick}) => {
   const [markersList, setMarkersList] = React.useState(markers)
@@ -29,6 +30,11 @@ const Map = ({center, zoom, markers, maxBounds, onClick}) => {
       <div className="leaflet-top leaflet-left">
         <div className={`leaflet-control ${styles.control}`}>
           <FilterControl handleFilterChange={filterByHasVideo}/>
+        </div>
+      </div>
+      <div className="leaflet-bottom leaflet-left">
+        <div className="leaflet-control">
+          {/*<Menu/>*/}
         </div>
       </div>
 

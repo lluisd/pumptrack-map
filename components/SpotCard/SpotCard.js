@@ -12,6 +12,7 @@ import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import Image from 'next/image';
 import Panorama from '../Panorama'
 import ThreeDRotationIcon from '@mui/icons-material/ThreeDRotation';
+import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 
 const SpotCard = ({spot, blurImages, handlerOnClose}) => {
   const [panorama, setPanorama] = useState(null)
@@ -68,7 +69,9 @@ const SpotCard = ({spot, blurImages, handlerOnClose}) => {
          <Grid container direction="row">
           <Grid item xs={2}>
             <Box display="flex" justifyContent="flex-start" sx={{ ml: 4 }}>
-              {(panorama || videoVR) && <Button variant="text"  onClick={handlerBack}>Back</Button>}
+              {(panorama || videoVR) && <Fab  size="small" aria-label="back"  onClick={handlerBack} className={styles.backButton} >
+                <ArrowBackIcon  />
+              </Fab> }
             </Box>
           </Grid>
           <Grid item xs={8}>
@@ -80,7 +83,9 @@ const SpotCard = ({spot, blurImages, handlerOnClose}) => {
           </Grid>
           <Grid item xs={2}>
             <Box display="flex" justifyContent="flex-end" sx={{ mr: 4 }}>
-              <Button variant="text" onClick={handlerOnClose} >Close</Button>
+              <Fab size="small"  aria-label="close"  onClick={handlerOnClose} className={styles.closeButton} >
+                <CloseIcon/>
+              </Fab>
             </Box>
           </Grid>
         </Grid>
@@ -99,13 +104,13 @@ const SpotCard = ({spot, blurImages, handlerOnClose}) => {
                       <Box className={styles.playButton} sx={{ '& > :not(style)': { m: 1 } }}>
                         {spot.video && <Fab color="primary" size="small" variant="extended"  onClick={handlerShowVideo} >
                           <PlayArrowIcon sx={{ mr: 1 }} />
-                          Play
+                          <Box sx={{ mr: 1 }}>Play</Box>
                         </Fab> }
                         {spot.panorama && <Fab color="primary" size="small" onClick={handlerShowPanorama}>
                           <ThreeDRotationIcon />
                         </Fab> }
                       </Box>
-                      <Fab color="primary" size="small"  aria-label="close"  onClick={handlerOnClose} className={styles.closeButton} >
+                      <Fab size="small"  aria-label="close"  onClick={handlerOnClose} className={styles.closeButton} >
                         <CloseIcon/>
                       </Fab>
                     </>
