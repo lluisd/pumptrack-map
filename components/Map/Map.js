@@ -28,13 +28,11 @@ const Map = ({center, zoom, markers, maxBounds, onClick}) => {
     <MapContainer center={center} zoom={zoom} scrollWheelZoom={true} style={{height: "100vh", width: "100wh"}} minZoom={9} maxBounds={maxBounds}
     className={styles.map} zoomControl={false}>
       <div className="leaflet-top leaflet-left">
-        <div className={`leaflet-control ${styles.control}`}>
-          <FilterControl handleFilterChange={filterByHasVideo}/>
-        </div>
-      </div>
-      <div className="leaflet-bottom leaflet-left">
         <div className="leaflet-control">
           <Menu/>
+        </div>
+        <div className={`leaflet-control ${styles.control}`}>
+          <FilterControl handleFilterChange={filterByHasVideo}/>
         </div>
       </div>
 

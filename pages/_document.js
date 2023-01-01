@@ -8,16 +8,9 @@ export default class MyDocument extends Document {
         return (
             <Html lang="en">
                 <Head>
-                    <script
-                      id="Cookiebot"
-                      src="https://consent.cookiebot.com/uc.js"
-                      data-cbid="8c2fa69b-c447-4859-aa7a-f598d13c2ade"
-                      type="text/javascript"
-                      async
-                    ></script>
                     {this.props.emotionStyleTags}
                 </Head>
-                <body>
+                <body className='theme_funky'>
                 <Main />
                 <NextScript />
                 </body>

@@ -1,8 +1,9 @@
 import Box from '@mui/material/Box'
-import { Divider, Drawer, Fab, List, ListItem, ListItemButton, ListItemText } from '@mui/material'
+import {Divider, Drawer, Fab, List, ListItem, ListItemButton, ListItemIcon, ListItemText} from '@mui/material'
 import MenuIcon from '@mui/icons-material/Menu';
 import styles from './Menu.module.css'
 import { useState } from 'react'
+import CookieIcon from '@mui/icons-material/Cookie';
 
 const Menu = () => {
   const [openMenu, setOpenMenu] = useState(false)
@@ -26,7 +27,9 @@ const Menu = () => {
         {['About'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
-              <ListItemText primary={text} />
+              <ListItemText primary="Política de cookies" onClick={() => {
+                window.CookieConsentApi.showSettings(0);
+              }} />
             </ListItemButton>
           </ListItem>
         ))}

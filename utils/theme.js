@@ -4,10 +4,10 @@ import {blue, red, yellow} from "@mui/material/colors";
 export const theme = createTheme({
     palette: {
         primary: {
-            main: yellow[500],
+            main: '#FFEB3B',
         },
         secondary: {
-            main: blue[500],
+          main: '#000',
         },
     },
 });
