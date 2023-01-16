@@ -3,11 +3,9 @@ import Box from '@mui/material/Box';
 import styles from './SpotCard.module.css';
 import { useEffect, useState } from 'react'
 import VideoVR from '../VideoVR/index'
-import { Chip, Container, Fab, Grid, Link, Skeleton } from '@mui/material'
-import Button from '@mui/material/Button'
+import { Chip, Fab, Grid, Link } from '@mui/material'
 import Typography from '@mui/material/Typography'
 import NavigationIcon from '@mui/icons-material/Navigation';
-import CloseOutlinedIcon from '@mui/icons-material/CloseOutlined';
 import CloseIcon from '@mui/icons-material/Close';
 import PlayArrowIcon from '@mui/icons-material/PlayArrow';
 import Image from 'next/image';
@@ -20,6 +18,7 @@ const SpotCard = ({spot, blurImages, handlerOnClose}) => {
   const [videoVR, setVideoVR] = useState(null)
 
   const img = `${process.env.NEXT_PUBLIC_CDN_BASE_URL}/${process.env.NEXT_PUBLIC_CDN_ROOT_DIR}/${process.env.NEXT_PUBLIC_IMAGES}/${spot.id}.jpg`
+  const blurImg = blurImages.find(bi => bi.id === spot.id).blurDataURL
 
   useEffect(() => {
     removePanorama()
@@ -57,11 +56,6 @@ const SpotCard = ({spot, blurImages, handlerOnClose}) => {
       status = 'success'
     }
     return status
-  }
-
-  const getBlurImage = (spot) => {
-    const blurImage = blurImages.find(bi => bi.id === spot.id)
-    return blurImage.blurDataURL
   }
 
   return (
@@ -121,7 +115,8 @@ const SpotCard = ({spot, blurImages, handlerOnClose}) => {
                       src={img}
                       layout="responsive"
                       placeholder="blur"
-                      blurDataURL={getBlurImage(spot)}/>
+                      key={img}
+                      blurDataURL={blurImg}/>
                     </Grid>
                   <Grid item>
                     <Grid container justifyContent="space-between" >

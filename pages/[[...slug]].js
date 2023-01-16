@@ -30,7 +30,7 @@ function MapPage({ allSpotsData, blurImages }) {
     }
   }, [])
 
-  function handleSelectedPumptrack (selectedPumptrack) {
+  const handleSelectedPumptrack = (selectedPumptrack) => {
     router.push(`/${selectedPumptrack.id}`, `/${selectedPumptrack.id}`, { shallow: true })
     setMarkerSelected(true)
     if (typeof fadingSpotTimeout === 'number') {
@@ -38,6 +38,7 @@ function MapPage({ allSpotsData, blurImages }) {
     }
     setPumptrack(selectedPumptrack)
   }
+
   const modalHandleClose = () => {
     setMarkerSelected(false)
     fadingSpotTimeout = setTimeout(() => {
