@@ -8,6 +8,15 @@ on:
     branches:
       - main
   workflow_dispatch:
+  repository_dispatch:
+
+env:
+  NEXT_PUBLIC_CDN_BASE_URL: https://pumptrack.azureedge.net
+  NEXT_PUBLIC_CDN_ROOT_DIR: spots
+  NEXT_PUBLIC_DATA: data
+  NEXT_PUBLIC_IMAGES: images
+  NEXT_PUBLIC_PANORAMAS: 360images
+  NEXT_PUBLIC_VR_VIDEOS: 360videos
 
 jobs:
   build:
@@ -27,6 +36,9 @@ jobs:
           npm run build --if-present
           npm run test --if-present
 
+      - name: Zip artifact for deployment
+        run: zip -r release.zip * .next
+
       - name: Upload artifact for deployment job
         uses: actions/upload-artifact@v2
         with:
@@ -45,6 +57,11 @@ jobs:
         uses: actions/download-artifact@v2
         with:
           name: node-app
+
+      - name: unzip artifact for deployment
+        run: |
+          unzip release.zip
+          rm release.zip
 
       - name: 'Deploy to Azure Web App'
         id: deploy-to-webapp
