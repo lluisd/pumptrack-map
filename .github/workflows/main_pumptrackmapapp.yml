@@ -8,6 +8,15 @@ on:
     branches:
       - main
   workflow_dispatch:
+  repository_dispatch:
+
+env:
+  NEXT_PUBLIC_CDN_BASE_URL: https://pumptrack.azureedge.net
+  NEXT_PUBLIC_CDN_ROOT_DIR: spots
+  NEXT_PUBLIC_DATA: data
+  NEXT_PUBLIC_IMAGES: images
+  NEXT_PUBLIC_PANORAMAS: 360images
+  NEXT_PUBLIC_VR_VIDEOS: 360videos
 
 jobs:
   build:
