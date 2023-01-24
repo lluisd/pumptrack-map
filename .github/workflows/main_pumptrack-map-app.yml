@@ -1,7 +1,7 @@
 # Docs for the Azure Web Apps Deploy action: https://github.com/Azure/webapps-deploy
 # More GitHub Actions for Azure: https://github.com/Azure/actions
 
-name: Build and deploy Node.js app to Azure Web App - PumptrackMapApp
+name: Build and deploy Node.js app to Azure Web App - pumptrack-map-app
 
 on:
   push:
@@ -68,7 +68,7 @@ jobs:
         id: deploy-to-webapp
         uses: azure/webapps-deploy@v2
         with:
-          app-name: 'pumptarck-map-app'
+          app-name: 'pumptrack-map-app'
           slot-name: 'Production'
-          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_D080CAA538F04ED6AC087009F324FB51 }}
+          publish-profile: ${{ secrets.AZUREAPPSERVICE_PUBLISHPROFILE_48B6A509BE5A41DEB9559B078880DA1A }}
           package: .
