@@ -1,4 +1,4 @@
-import { useRef, useEffect, useState } from 'react'
+import { useRef, useEffect, useState, useLayoutEffect } from 'react'
 import 'aframe'
 import {Entity, Scene} from 'aframe-react'
 import { Grid, Skeleton } from '@mui/material'
@@ -11,36 +11,34 @@ const VideoVR = ({videoVR}) => {
   const sceneEl = useRef(null)
   const textEl = useRef(null)
 
-  useEffect(() => {
-    setLoaded(false)
-  }, [videoVR])
+  const videoUrl = `${process.env.NEXT_PUBLIC_CDN_BASE_URL}/${process.env.NEXT_PUBLIC_CDN_ROOT_DIR}/${process.env.NEXT_PUBLIC_VR_VIDEOS}/${videoVR}`
 
-  useEffect(() => {
+  useLayoutEffect(() => {
     let video = videoEl.current
     let scene = sceneEl.current
     let text = textEl.current
-    scene.el.style.display = 'none'
-    let loaded = false
+
+    let sceneLoaded = false
     let clicked = false
 
     if (scene) {
       scene.el.addEventListener('loaded', () => {
         scene.el.style.display = 'block'
         setLoaded(true)
-        loaded = true
-        playVideo(video, loaded, clicked)
+        sceneLoaded = true
+        playVideo(video, sceneLoaded, clicked)
       })
       scene.el.addEventListener('click', () => {
         text.el.object3D.visible = false
         clicked = true
-        playVideo(video, loaded, clicked)
+        playVideo(video, sceneLoaded, clicked)
       })
     }
   }, [])
-  const videoUrl = `${process.env.NEXT_PUBLIC_CDN_BASE_URL}/${process.env.NEXT_PUBLIC_CDN_ROOT_DIR}/${process.env.NEXT_PUBLIC_VR_VIDEOS}/${videoVR}`
 
-  const playVideo = (video, loaded, clicked) => {
-    if(loaded && clicked && video)  {
+
+  const playVideo = (video, sceneLoaded, clicked) => {
+    if(sceneLoaded && clicked && video)  {
       if (video) {
         video.volume = 0.2
         video.play()
@@ -52,7 +50,7 @@ const VideoVR = ({videoVR}) => {
     <Grid container spacing={0} direction="column" >
       <Grid item className={styles.videoVR}>
         { loaded ? '' : <Skeleton variant="rectangular" width={600} height={400} animation="wave" />}
-        <Scene ref={sceneEl} embedded  loading-screen="dotsColor: red; backgroundColor: black">
+        <Scene ref={sceneEl} embedded  loading-screen="dotsColor: red; backgroundColor: black" >
           <a-assets>
             <video preload="none" ref={videoEl} id="vrVideo" src={videoUrl} loop={false} playsInline crossOrigin="anonymous"   />
           </a-assets>
