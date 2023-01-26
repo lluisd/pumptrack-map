@@ -12,6 +12,8 @@ NEXT_PUBLIC_CDN_ROOT_DIR //root folder of your CDN
 NEXT_PUBLIC_DATA //folder inside CDN that contains specific pumptracks json files and spots.json
 NEXT_PUBLIC_IMAGES //folder inside CDN that contains pumptrack map images
 NEXT_PUBLIC_VR_VIDEOS //folder inside CDN that contains 360 pumptrack videos
+NEXT_PUBLIC_PANORAMAS //folder inside CDN that contains 360 pumptrack images
+
 ```
 
 ### Assets/CDN structure
@@ -22,6 +24,10 @@ NEXT_PUBLIC_VR_VIDEOS //folder inside CDN that contains 360 pumptrack videos
 │   │   ├── albons.mp4
 │   │   ├── ...
 │   │   └── cassa.mp4
+│   ├── 360images (NEXT_PUBLIC_PANORAMAS)
+│   │   ├── 360albons.jpg
+│   │   ├── ...
+│   │   └── 360cassa.jpg
 │   ├── images (NEXT_PUBLIC_IMAGES)
 │   │   ├── albons.jpg
 │   │   ├── ...
@@ -35,5 +41,5 @@ Assets used for data, images and 360videos (VR videos) can be found here:
 https://github.com/lluisd/pumptrack-map-assets
 
 ## Demo
-https://pumptrackmapapp.azurewebsites.net/
+https://pumptrack-map-app.azurewebsites.net/
 
