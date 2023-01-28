@@ -37,7 +37,7 @@ const Map = ({center, zoom, markers, maxBounds, onClick}) => {
 
       <TileLayer
         attribution='ap tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL.'
-        url="https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png"
+        url="https://maps.frostynas.duckdns.org/tile/{z}/{x}/{y}.png"
       />
       <ZoomControl position="bottomright" />
       {markersList.map((marker) => {
