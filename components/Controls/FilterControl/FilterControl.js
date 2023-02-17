@@ -23,8 +23,8 @@ const FilterControl = ({handleFilterChange}) => {
           value={value}
           onChange={handleChange}
         >
-          <FormControlLabel value="all" control={<Radio />} label="All" />
-          <FormControlLabel value="video" control={<Radio />} label="with Video VR" />
+          <FormControlLabel value="all" control={<Radio />} label="Todos" />
+          <FormControlLabel value="video" control={<Radio />} label="con Video" />
         </RadioGroup>
       </FormControl>
     </Box>

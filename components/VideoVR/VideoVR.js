@@ -60,7 +60,7 @@ const VideoVR = ({videoVR}) => {
                 width:6;
                 wrapCount:100;
                 color: white;
-                value: Click or tap to start video"></Entity>
+                value: Click para iniciar"></Entity>
           </Entity>
           <Entity id="video" primitive="a-videosphere" src="#vrVideo" play-on-click rotation="0 -85 0"/>
         </Scene>
