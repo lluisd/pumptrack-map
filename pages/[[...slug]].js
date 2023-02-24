@@ -8,6 +8,7 @@ import styles from "../styles/Home.module.css"
 import Fade from '@mui/material/Fade'
 import { getImagePlaceholders } from '../lib/placeholders'
 import { useRouter } from 'next/router'
+import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
 
 let fadingSpotTimeout = undefined
 
@@ -69,7 +70,10 @@ export async function getStaticProps(params) {
     return {
       props: {
         allSpotsData,
-        blurImages
+        blurImages,
+        ...(await serverSideTranslations(params.locale, [
+          'common',
+        ])),
       }
     }
   }

@@ -4,8 +4,10 @@ import {Entity, Scene} from 'aframe-react'
 import { Grid, Skeleton } from '@mui/material'
 import styles from './VideoVR.module.css'
 import * as React from 'react'
+import { useTranslation } from 'next-i18next'
 
 const VideoVR = ({videoVR}) => {
+  const { t } = useTranslation('common')
   const [loaded, setLoaded] = useState(false)
   const videoEl = useRef(null)
   const sceneEl = useRef(null)
@@ -46,6 +48,8 @@ const VideoVR = ({videoVR}) => {
     }
   }
 
+  const entityText = `align:center; width:6; wrapCount:100; color: white; value: ${t('click-to-play')}`
+
   return (
     <Grid container spacing={0} direction="column" >
       <Grid item className={styles.videoVR}>
@@ -55,12 +59,7 @@ const VideoVR = ({videoVR}) => {
             <video preload="none" ref={videoEl} id="vrVideo" src={videoUrl} loop={false} playsInline crossOrigin="anonymous"   />
           </a-assets>
           <Entity primitive="a-camera">
-            <Entity ref={textEl} position="0 0 -1.5"
-                    text="align:center;
-                width:6;
-                wrapCount:100;
-                color: white;
-                value: Click para iniciar"></Entity>
+            <Entity ref={textEl} position="0 0 -1.5" text={entityText}></Entity>
           </Entity>
           <Entity id="video" primitive="a-videosphere" src="#vrVideo" play-on-click rotation="0 -85 0"/>
         </Scene>

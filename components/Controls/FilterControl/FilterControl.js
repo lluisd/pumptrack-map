@@ -5,8 +5,10 @@ import FormControlLabel from '@mui/material/FormControlLabel'
 import FormControl from '@mui/material/FormControl'
 import Box from '@mui/material/Box'
 import styles from './FilterControl.module.css'
+import { useTranslation } from 'next-i18next'
 
 const FilterControl = ({handleFilterChange}) => {
+  const { t } = useTranslation('common')
   const [value, setValue] = React.useState('all')
 
   const handleChange = (event) => {
@@ -23,8 +25,8 @@ const FilterControl = ({handleFilterChange}) => {
           value={value}
           onChange={handleChange}
         >
-          <FormControlLabel value="all" control={<Radio />} label="Todos" />
-          <FormControlLabel value="video" control={<Radio />} label="con Video" />
+          <FormControlLabel value="all" control={<Radio />} label={t('all')} />
+          <FormControlLabel value="video" control={<Radio />} label={t('with-video')} />
         </RadioGroup>
       </FormControl>
     </Box>

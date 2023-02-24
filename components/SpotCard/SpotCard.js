@@ -12,8 +12,11 @@ import Image from 'next/image';
 import Panorama from '../Panorama'
 import ThreeDRotationIcon from '@mui/icons-material/ThreeDRotation';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
+import { useTranslation } from 'next-i18next'
 
 const SpotCard = ({spot, blurImages, handlerOnClose}) => {
+  const { t } = useTranslation('common')
+
   const [panorama, setPanorama] = useState(null)
   const [videoVR, setVideoVR] = useState(null)
 
@@ -99,7 +102,7 @@ const SpotCard = ({spot, blurImages, handlerOnClose}) => {
                       <Box className={styles.playButton} sx={{ '& > :not(style)': { m: 1 } }}>
                         {spot.video && <Fab color="primary" size="small" variant="extended"  onClick={handlerShowVideo} >
                           <PlayArrowIcon sx={{ mr: 1 }} />
-                          <Box sx={{ mr: 1 }}>Play</Box>
+                          <Box sx={{ mr: 1 }}>{t('play')}</Box>
                         </Fab> }
                         {spot.panorama && <Fab color="primary" size="small" onClick={handlerShowPanorama}>
                           <ThreeDRotationIcon />
@@ -126,20 +129,20 @@ const SpotCard = ({spot, blurImages, handlerOnClose}) => {
                           {spot.name}
                         </Typography>
                         <Typography variant="subtitle1" gutterBottom>
-                        Province: {spot.province}
+                          {t('province')}: {spot.province}
                         </Typography>
                         <Typography variant="subtitle1" gutterBottom>
-                          {spot.length ? `Length: ${spot.length} meters` : ''}
+                          {spot.length ? `${t('length')}: ${spot.length} ${t('meters')}` : ''}
                         </Typography>
                       </Grid>
                       <Grid item  p={2} justify="flex-end" >
                         <Typography variant="subtitle1" gutterBottom>
                           <Grid container direction="row" alignItems="center" spacing={1}>
                             <Grid item>
-                              Status:
+                              {t('status')}:
                             </Grid>
                             <Grid item>
-                              <Chip label={spot.status} color={getStatus(spot)}  />
+                              <Chip label={t(spot.status)} color={getStatus(spot)}  />
                             </Grid>
                           </Grid>
                         </Typography>

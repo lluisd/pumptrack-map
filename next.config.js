@@ -1,4 +1,5 @@
 const { withPlaiceholder } = require("@plaiceholder/next");
+const { i18n } = require('./next-i18next.config')
 
 /**
  * @type {import('next').NextConfig}
@@ -11,7 +12,8 @@ const nextConfig = {
     minimumCacheTTL: 31536000,
     domains: ['localhost', 'pumptrack.azureedge.net'],
     //disableStaticImages: true
-  }
+  },
+  i18n
 }
 
 module.exports = withPlaiceholder(nextConfig)

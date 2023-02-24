@@ -4,7 +4,7 @@ import { theme } from "../utils/theme"
 import createEmotionCache from "../utils/createEmotionCache"
 import { CacheProvider } from "@emotion/react"
 import CookieConsent from "../components/CookieConsent/CookieConsent"
-
+import { appWithTranslation } from 'next-i18next'
 
 const clientSideEmotionCache = createEmotionCache()
 
@@ -21,6 +21,5 @@ function MyApp({
       </CacheProvider>
   )
 }
-//theme_funky
 
-export default MyApp
+export default appWithTranslation(MyApp)
