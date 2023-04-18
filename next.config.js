@@ -10,7 +10,7 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     reactStrictMode: true,
     minimumCacheTTL: 31536000,
-    domains: ['localhost', 'pumptrack.azureedge.net'],
+    domains: ['localhost', 'pumptrack.azureedge.net', 'cdn.gironapumptracks.com'],
     //disableStaticImages: true
   },
   i18n: {
