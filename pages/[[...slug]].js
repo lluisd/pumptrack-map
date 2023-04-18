@@ -80,11 +80,17 @@ export async function getStaticProps(params) {
 }
 
 export async function getStaticPaths() {
+  const allSpotsData = await getSortedSpotsData()
+
+  const paths = allSpotsData.spots.flatMap((spot) => ([
+    { params: { slug: [spot.id] }},
+    { params: { slug: [spot.id] }, locale: 'en' }
+  ]))
+
+
   return {
-    paths: [
-      { params: { slug: false }},
-    ],
-    fallback: 'blocking',
+    paths: paths.concat({ params: { slug: false }}),
+    fallback: 'blocking'
   }
 }
 
