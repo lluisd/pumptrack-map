@@ -4,8 +4,10 @@ import MenuIcon from '@mui/icons-material/Menu';
 import styles from './Menu.module.css'
 import { useState } from 'react'
 import CookieIcon from '@mui/icons-material/Cookie';
+import { useTranslation } from 'next-i18next'
 
 const Menu = () => {
+  const { t } = useTranslation('common')
   const [openMenu, setOpenMenu] = useState(false)
 
   const toggleDrawer = (open) => (event) => {
@@ -27,7 +29,7 @@ const Menu = () => {
         {['About'].map((text, index) => (
           <ListItem key={text} disablePadding>
             <ListItemButton>
-              <ListItemText primary="Política de cookies" onClick={() => {
+              <ListItemText primary={t('cookies-policy')} onClick={() => {
                 window.CookieConsentApi.showSettings(0);
               }} />
             </ListItemButton>
@@ -39,7 +41,7 @@ const Menu = () => {
 
   return (
     <>
-      <Fab  aria-label="menu" color="primary"  onClick={toggleDrawer(true)}>
+      <Fab aria-label="menu" color="primary"  onClick={toggleDrawer(true)}>
         <MenuIcon />
       </Fab>
       <Drawer

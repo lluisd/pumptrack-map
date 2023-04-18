@@ -49,7 +49,7 @@ export default function CookieConsent() {
         },
 
         languages: {
-          en: {
+          es: {
             consent_modal: {
               title: '¡Usamos cookies!',
               description:

@@ -1,14 +1,13 @@
-.filterControl {
+.languageSelector {
   background: #fff;
-
   z-index: 200000;
   border-radius: 25px;
   overflow: auto;
   margin-left: 10px;
   padding-left: 20px;
   padding-right:10px;
-  padding-top:5px;
-  padding-bottom:5px;
+  padding-top:15px;
+  padding-bottom:10px;
   box-shadow: 0 0.5em 1em -0.125em rgb(10 10 10 / 10%), 0 0 0 1px rgb(10 10 10 / 2%);
 }
 

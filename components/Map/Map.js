@@ -4,6 +4,7 @@ import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import styles from './Map.module.css'
 import FilterControl from '../Controls/FilterControl/FilterControl'
+import LanguageSelector from '../Controls/LanguageSelector/LanguageSelector'
 import icon from '../../public/images/icon.svg'
 import veloIcon from '../../public/images/icon-velo.svg'
 import { Menu } from '../Menu'
@@ -19,6 +20,11 @@ const Map = ({center, zoom, markers, maxBounds, onClick}) => {
     }
     setMarkersList(filteredMarkers)
   }
+
+  const languageChange = (lang) => {
+
+  }
+
   const setIcon = (marker) => {
     setSelectedMarker(marker)
   }
@@ -32,6 +38,12 @@ const Map = ({center, zoom, markers, maxBounds, onClick}) => {
         </div>
         <div className={`leaflet-control ${styles.control}`}>
           <FilterControl handleFilterChange={filterByHasVideo}/>
+        </div>
+      </div>
+
+      <div className="leaflet-top leaflet-right">
+        <div className={`leaflet-control ${styles.control}`}>
+          <LanguageSelector handleLanguageChange={languageChange}/>
         </div>
       </div>
 

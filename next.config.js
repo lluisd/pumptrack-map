@@ -13,7 +13,10 @@ const nextConfig = {
     domains: ['localhost', 'pumptrack.azureedge.net'],
     //disableStaticImages: true
   },
-  i18n
+  i18n: {
+    locales: ['es', 'en'],
+    defaultLocale: 'es'
+  }
 }
 
 module.exports = withPlaiceholder(nextConfig)
