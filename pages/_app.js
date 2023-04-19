@@ -16,8 +16,8 @@ function MyApp({
   return (
       <CacheProvider value={emotionCache}>
         <ThemeProvider theme={theme}>
-          <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-C7YNG3T7HH" />
-          <Script id="google-analytics" strategy="afterInteractive">
+          <Script strategy="afterInteractive" src="https://www.googletagmanager.com/gtag/js?id=G-C7YNG3T7HH" data-cookiecategory="analytics" type="text/plain" />
+          <Script id="google-analytics" strategy="afterInteractive" data-cookiecategory="analytics" type="text/plain">
             {`
               window.dataLayer = window.dataLayer || [];
               function gtag(){dataLayer.push(arguments);}

@@ -19,7 +19,6 @@ export default function CookieConsent() {
         current_lang: 'es',
         autoclear_cookies: true, // default: false
         page_scripts: true, // default: false
-        test: 'ciao',
         // mode: 'opt-in'                          // default: 'opt-in'; value: 'opt-in' or 'opt-out'
         // delay: 0,                               // default: 0
         // auto_language: null                     // default: null; could also be 'browser' or 'document'
