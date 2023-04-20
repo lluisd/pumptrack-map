@@ -9,6 +9,7 @@ import Fade from '@mui/material/Fade'
 import { getImagePlaceholders } from '../lib/placeholders'
 import { useRouter } from 'next/router'
 import { serverSideTranslations } from 'next-i18next/serverSideTranslations'
+import Head from 'next/head'
 
 let fadingSpotTimeout = undefined
 
@@ -49,14 +50,20 @@ function MapPage({ allSpotsData, blurImages }) {
   }
 
   return (
-    <Layout>
+    <>
+      <Head>
+        {pumptrack && <title>{pumptrack.name} | Pumptracks Girona</title>}
+        {!pumptrack && <title>Pumptracks Girona</title>}
+      </Head>
+      <Layout>
         <Map center={center} zoom={mapZoom} markers={allSpotsData.spots} maxBounds={bounds} onClick={handleSelectedPumptrack} />
         <Fade in={markerSelected} timeout={1000} >
           <Box className={styles.contentbox} >
             {pumptrack && <SpotCard spot={pumptrack} blurImages={blurImages} handlerOnClose={modalHandleClose}/>}
           </Box>
         </Fade>
-    </Layout>
+      </Layout>
+    </>
   )
 }
 

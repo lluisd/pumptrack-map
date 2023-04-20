@@ -11,8 +11,8 @@ export default class MyDocument extends Document {
                     {this.props.emotionStyleTags}
                 </Head>
                 <body className='theme_funky'>
-                <Main />
-                <NextScript />
+                  <Main />
+                  <NextScript />
                 </body>
             </Html>
         );

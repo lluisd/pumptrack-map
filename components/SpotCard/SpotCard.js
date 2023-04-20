@@ -120,6 +120,7 @@ const SpotCard = ({spot, blurImages, handlerOnClose}) => {
                       placeholder="blur"
                       key={img}
                       priority={true}
+                      alt={t('picture-of') + spot.name}
                       blurDataURL={blurImg}/>
                     </Grid>
                   <Grid item>

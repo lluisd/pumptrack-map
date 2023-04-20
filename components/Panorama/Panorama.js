@@ -4,8 +4,10 @@ import {Entity, Scene} from 'aframe-react'
 import { Grid, Skeleton } from '@mui/material'
 import styles from './Panorama.module.css'
 import { useEffect, useRef, useState } from 'react'
+import { useTranslation } from 'next-i18next'
 
 const Panorama = ({panorama}) => {
+  const { t } = useTranslation('common')
   const [loaded, setLoaded] = useState(false)
   const sceneEl = useRef(null)
 
@@ -33,7 +35,7 @@ const Panorama = ({panorama}) => {
         { loaded ? '' : <Skeleton variant="rectangular" width={600} height={400} animation="wave" />}
         <Scene ref={sceneEl} embedded>
           <a-assets>
-            <img src={image} id="panorama" />
+            <img src={image} id="panorama" alt={t('picture-of') + panorama.image} />
           </a-assets>
           <Entity primitive='a-sky' src="#panorama" rotation={panorama.rotation}/>
         </Scene>
