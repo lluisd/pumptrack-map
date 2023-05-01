@@ -54,6 +54,7 @@ function MapPage({ allSpotsData, blurImages }) {
       <Head>
         {pumptrack && <title>{pumptrack.name} | Pumptracks Girona</title>}
         {!pumptrack && <title>Pumptracks Girona</title>}
+        <meta name="description" content="Mapa de los pumptracks de la provincia de Girona con fotos y videos en primera persona" key="desc" />
       </Head>
       <Layout>
         <Map center={center} zoom={mapZoom} markers={allSpotsData.spots} maxBounds={bounds} onClick={handleSelectedPumptrack} />
