@@ -7,6 +7,7 @@ import FilterControl from '../Controls/FilterControl/FilterControl'
 import LanguageSelector from '../Controls/LanguageSelector/LanguageSelector'
 import icon from '../../public/images/icon.svg'
 import veloIcon from '../../public/images/icon-velo.svg'
+import iconNew from '../../public/images/icon-new.svg'
 import { Menu } from '../Menu'
 
 const Map = ({center, zoom, markers, maxBounds, onClick}) => {
@@ -79,6 +80,9 @@ function getIcon(marker, selectedMarker) {
       iconFile = veloIcon
   }
 
+  if (marker.status === 'construction') {
+    iconFile = iconNew
+  }
   if (selectedMarker && marker.id === selectedMarker.id) {
     className = styles['map-icon-selected']
     iconSize = [50, 50]
