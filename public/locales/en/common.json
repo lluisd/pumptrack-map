@@ -1,5 +1,5 @@
 {
-  "status": "Estado",
+  "status": "Status",
   "province": "Province",
   "play": "Play",
   "open": "Open",
@@ -11,5 +11,7 @@
   "cookies-policy": "Cookies policy",
   "english": "EN",
   "spanish": "ES",
-  "picture-of": "Picture of the "
+  "picture-of": "Picture of the ",
+  "contact": "Contact",
+  "contact-text": "If you want to conntact with me you can send an email to "
 }

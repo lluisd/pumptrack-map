@@ -5,9 +5,11 @@ import styles from './Menu.module.css'
 import { useState } from 'react'
 import CookieIcon from '@mui/icons-material/Cookie';
 import { useTranslation } from 'next-i18next'
+import Contact from '../Contact/Contact'
 
 const Menu = () => {
   const { t } = useTranslation('common')
+  const [openContactModal, setOpenContactModal] = useState(false)
   const [openMenu, setOpenMenu] = useState(false)
 
   const toggleDrawer = (open) => (event) => {
@@ -26,15 +28,18 @@ const Menu = () => {
     >
       <Divider />
       <List>
-        {['About'].map((text, index) => (
-          <ListItem key={text} disablePadding>
-            <ListItemButton>
-              <ListItemText primary={t('cookies-policy')} onClick={() => {
-                window.CookieConsentApi.showSettings(0);
-              }} />
-            </ListItemButton>
-          </ListItem>
-        ))}
+        <ListItem key="cookies-policy" disablePadding>
+          <ListItemButton>
+            <ListItemText primary={t('cookies-policy')} onClick={() => {
+              window.CookieConsentApi.showSettings(0);
+            }} />
+          </ListItemButton>
+        </ListItem>
+        <ListItem key="contact" disablePadding>
+          <ListItemButton>
+            <ListItemText primary={t('contact')} onClick={() => setOpenContactModal(true)} />
+          </ListItemButton>
+        </ListItem>
       </List>
     </Box>
   )
@@ -52,6 +57,7 @@ const Menu = () => {
       >
         {menu()}
       </Drawer>
+      <Contact open={openContactModal} onClose={() => setOpenContactModal(false)}></Contact>
     </>
   )
 }
