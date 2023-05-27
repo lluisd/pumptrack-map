@@ -9,7 +9,7 @@ const nextConfig = {
   images: {
     dangerouslyAllowSVG: true,
     reactStrictMode: true,
-    minimumCacheTTL: 31536000,
+    minimumCacheTTL: 60,
     domains: ['localhost', 'pumptrack.azureedge.net', 'cdn.gironapumptracks.com'],
     //disableStaticImages: true
   },
