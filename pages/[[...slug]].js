@@ -46,7 +46,7 @@ function MapPage({ allSpotsData, blurImages }) {
     fadingSpotTimeout = setTimeout(() => {
       fadingSpotTimeout = undefined
       setPumptrack(null)
-    }, 1000)
+    }, 0)
   }
 
   return (
@@ -65,7 +65,7 @@ function MapPage({ allSpotsData, blurImages }) {
       </Head>
       <Layout>
         <Map center={center} zoom={mapZoom} markers={allSpotsData.spots} maxBounds={bounds} onClick={handleSelectedPumptrack} />
-        <Fade in={markerSelected} timeout={1000} >
+        <Fade in={markerSelected} timeout={{appear: 1000, enter: 1000, exit: 0}} >
           <Box className={styles.contentbox} >
             {pumptrack && <SpotCard spot={pumptrack} blurImages={blurImages} handlerOnClose={modalHandleClose}/>}
           </Box>
