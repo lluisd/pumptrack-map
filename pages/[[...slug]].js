@@ -64,7 +64,7 @@ function MapPage({ allSpotsData, blurImages }) {
         <meta name="theme-color" content="#ffffff"/>
       </Head>
       <Layout>
-        <Map center={center} zoom={mapZoom} markers={allSpotsData.spots} maxBounds={bounds} onClick={handleSelectedPumptrack} />
+        <Map center={center} zoom={mapZoom} markers={allSpotsData.spots.filter(s => s.province === 'girona')} maxBounds={bounds} onClick={handleSelectedPumptrack} />
         <Fade in={markerSelected} timeout={{appear: 1000, enter: 1000, exit: 0}} >
           <Box className={styles.contentbox} >
             {pumptrack && <SpotCard spot={pumptrack} blurImages={blurImages} handlerOnClose={modalHandleClose}/>}

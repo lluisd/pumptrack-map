@@ -13,6 +13,7 @@ import Panorama from '../Panorama'
 import ThreeDRotationIcon from '@mui/icons-material/ThreeDRotation';
 import ArrowBackIcon from '@mui/icons-material/ArrowBack';
 import { useTranslation } from 'next-i18next'
+import veloIcon from '../../public/images/icon-velo.svg'
 
 const SpotCard = ({spot, blurImages, handlerOnClose}) => {
   const { t } = useTranslation('common')
@@ -62,6 +63,20 @@ const SpotCard = ({spot, blurImages, handlerOnClose}) => {
       status = 'success'
     }
     return status
+  }
+
+  const getLink = (brand) => {
+    let link
+    switch (brand) {
+      case 'velosolutions':
+        link = 'https://velosolutions.com/es/'
+        break
+      case 'pumptrackpark':
+        link = 'https://www.pumptrack.cat/'
+        break
+    }
+
+    return link
   }
 
   return (
@@ -133,7 +148,7 @@ const SpotCard = ({spot, blurImages, handlerOnClose}) => {
                           {spot.name}
                         </Typography>
                         <Typography variant="subtitle1" gutterBottom>
-                          {t('province')}: {spot.province}
+                          {t('company')}: <Link href={getLink(spot.brand)} rel="noreferrer" target="_blank" color="secondary">{t(spot.brand)}</Link>
                         </Typography>
                         <Typography variant="subtitle1" gutterBottom>
                           {spot.length ? `${t('length')}: ${spot.length} ${t('meters')}` : ''}

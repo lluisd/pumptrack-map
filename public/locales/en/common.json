@@ -1,6 +1,9 @@
 {
   "status": "Status",
   "province": "Province",
+  "company": "Company",
+  "velosolutions": "Velosolutions",
+  "pumptrackpark": "Pump Track Park",
   "play": "Play",
   "open": "Open",
   "construction": "planned",

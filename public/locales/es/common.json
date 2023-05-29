@@ -1,6 +1,9 @@
 {
   "status": "Estado",
   "province": "Provincia",
+  "company": "Empresa",
+  "velosolutions": "Velosolutions",
+  "pumptrackpark": "Pump Track Park",
   "play": "Reproducir",
   "open": "Abierto",
   "construction": "Planeado",
