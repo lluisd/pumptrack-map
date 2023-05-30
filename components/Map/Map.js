@@ -58,7 +58,7 @@ const Map = ({center, zoom, markers, maxBounds, onClick}) => {
           <Marker key={marker.id} position={marker.coordinates} icon={getIcon(marker, selectedMarker)}
                   eventHandlers={{
                     click: () => {onClick(marker); setIcon(marker)}
-                  }}>
+                  }} opacity={getOpacity(marker)}>
             <Tooltip direction="bottom" offset={[0, 10]} opacity={1} permanent className={styles.tooltip}>
               {marker.id}
             </Tooltip>
@@ -80,9 +80,6 @@ function getIcon(marker, selectedMarker) {
       iconFile = veloIcon
   }
 
-  if (marker.status === 'construction') {
-    iconFile = iconNew
-  }
   if (selectedMarker && marker.id === selectedMarker.id) {
     className = styles['map-icon-selected']
     iconSize = [50, 50]
@@ -95,4 +92,13 @@ function getIcon(marker, selectedMarker) {
   })
 }
 
+
+function getOpacity(marker) {
+  let opacity = 1
+  if (marker.status === 'construction') {
+    opacity = 0.6
+  }
+
+  return opacity
+}
 export default Map
