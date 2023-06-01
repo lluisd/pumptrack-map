@@ -143,7 +143,7 @@ const SpotCard = ({spot, blurImages, handlerOnClose}) => {
                     </Grid>
                   <Grid item>
                     <Grid container justifyContent="space-between" >
-                      <Grid item xs={6} md={8} className={styles.trackInfo} p={2}>
+                      <Grid item xs={12} sm={10} md={8} className={styles.trackInfo} p={2}>
                         <Typography variant="h6" gutterBottom>
                           {spot.name}
                         </Typography>
@@ -156,10 +156,7 @@ const SpotCard = ({spot, blurImages, handlerOnClose}) => {
                       </Grid>
                       <Grid item  p={2} justify="flex-end" >
                         <Typography variant="subtitle1" gutterBottom>
-                          <Grid container direction="row" alignItems="center" spacing={1}>
-                            <Grid item>
-                              {t('status')}:
-                            </Grid>
+                          <Grid container direction="row" alignItems="center" spacing={1} justifyContent="flex-end">
                             <Grid item>
                               <Chip label={t(spot.status)} color={getStatus(spot)}  />
                             </Grid>
@@ -167,12 +164,12 @@ const SpotCard = ({spot, blurImages, handlerOnClose}) => {
                         </Typography>
                         <Typography variant="subtitle1" gutterBottom>
                           <Link href={spot.gmapsLink} rel="noreferrer" target="_blank" color="secondary">
-                            <Grid container direction="row" alignItems="center" spacing={1}>
+                            <Grid container direction="row" alignItems="center" spacing={1} justifyContent="flex-end">
                               <Grid item>
                                 <NavigationIcon size="small" />
                               </Grid>
                               <Grid item>
-                                Google maps
+                                {t('gmaps-link')}
                               </Grid>
                             </Grid>
                           </Link>
