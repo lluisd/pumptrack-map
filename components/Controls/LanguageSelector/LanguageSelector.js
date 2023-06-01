@@ -6,10 +6,9 @@ import Box from '@mui/material/Box'
 import styles from './LanguageSelector.module.css'
 import { useTranslation } from 'next-i18next'
 import MenuItem from '@mui/material/MenuItem'
-import Link from 'next/link'
 import { useRouter } from 'next/router'
 
-const LanguageSelector = ({handleLanguageChange}) => {
+const LanguageSelector = () => {
   const router = useRouter()
   const { t } = useTranslation('common')
 

@@ -1,5 +1,5 @@
-import { MapContainer, Marker, Popup, TileLayer, Tooltip, ZoomControl } from 'react-leaflet'
-import React from 'react'
+import { FeatureGroup, MapContainer, Marker, Popup, TileLayer, Tooltip, ZoomControl } from 'react-leaflet'
+import React, { useEffect, useRef, useState } from 'react'
 import L from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 import styles from './Map.module.css'
@@ -7,12 +7,13 @@ import FilterControl from '../Controls/FilterControl/FilterControl'
 import LanguageSelector from '../Controls/LanguageSelector/LanguageSelector'
 import icon from '../../public/images/icon.svg'
 import veloIcon from '../../public/images/icon-velo.svg'
-import iconNew from '../../public/images/icon-new.svg'
 import { Menu } from '../Menu'
 
 const Map = ({center, zoom, markers, maxBounds, onClick}) => {
-  const [markersList, setMarkersList] = React.useState(markers)
-  const [selectedMarker, setSelectedMarker] = React.useState(null)
+  const [markersList, setMarkersList] = useState(markers)
+  const [selectedMarker, setSelectedMarker] = useState(null)
+  const [map, setMap] = useState(null);
+  const groupRef = useRef()
 
   const filterByHasVideo = (option) => {
     let filteredMarkers = markers
@@ -22,17 +23,25 @@ const Map = ({center, zoom, markers, maxBounds, onClick}) => {
     setMarkersList(filteredMarkers)
   }
 
-  const languageChange = (lang) => {
-
-  }
-
   const setIcon = (marker) => {
     setSelectedMarker(marker)
   }
 
+  useEffect(() => {
+    if (!map) return
+    map.fitBounds(groupRef.current.getBounds())
+  }, [map])
+
   return (
-    <MapContainer center={center} zoom={zoom} scrollWheelZoom={true} style={{height: "100vh", width: "100wh"}} minZoom={9} maxZoom={14} maxBounds={maxBounds}
-    className={styles.map} zoomControl={false}>
+    <MapContainer
+      center={center}
+      zoom={zoom}
+      scrollWheelZoom={true}
+      style={{height: "100vh", width: "100wh"}}
+      className={styles.map}
+      zoomControl={false}
+      whenReady={(map) => {setMap(map.target)}}
+      >
       <div className="leaflet-top leaflet-left">
         <div className="leaflet-control">
           <Menu/>
@@ -44,7 +53,7 @@ const Map = ({center, zoom, markers, maxBounds, onClick}) => {
 
       <div className="leaflet-top leaflet-right">
         <div className={`leaflet-control ${styles.control}`}>
-          <LanguageSelector handleLanguageChange={languageChange}/>
+          <LanguageSelector />
         </div>
       </div>
 
@@ -53,19 +62,29 @@ const Map = ({center, zoom, markers, maxBounds, onClick}) => {
         url="https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png"
       />
       <ZoomControl position="bottomright" />
-      {markersList.map((marker) => {
-        return  (
-          <Marker key={marker.id} position={marker.coordinates} icon={getIcon(marker, selectedMarker)}
-                  eventHandlers={{
-                    click: () => {onClick(marker); setIcon(marker)}
-                  }} opacity={getOpacity(marker)}>
-            <Tooltip direction="bottom" offset={[0, 10]} opacity={1} permanent className={styles.tooltip}>
-              {marker.id}
-            </Tooltip>
-          </Marker>
-        )
-      })}
-
+      <FeatureGroup ref={groupRef}>
+        {markersList.map((marker) => {
+          return  (
+            <Marker
+              key={marker.id}
+              position={marker.coordinates}
+              icon={getIcon(marker, selectedMarker)}
+              eventHandlers={{
+                click: () => {onClick(marker); setIcon(marker)}
+              }}
+              opacity={getOpacity(marker)}>
+              <Tooltip
+                direction="bottom"
+                offset={[0, 10]}
+                opacity={1}
+                permanent
+                className={styles.tooltip}>
+                {marker.id}
+              </Tooltip>
+            </Marker>
+          )
+        })}
+      </FeatureGroup>
     </MapContainer>
   )
 }
