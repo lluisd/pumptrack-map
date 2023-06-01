@@ -4,7 +4,7 @@ A pumptrack map where you see check spots to see more information like a 360 vie
 also VR mode to have a live view.
 
 ## Configure it
-You will need to configure the next environment variables
+You will need to configure the next environment variables:
 
 ```javascript
 NEXT_PUBLIC_CDN_BASE_URL //base URL of your CDN
