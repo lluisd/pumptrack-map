@@ -41,5 +41,5 @@ Assets used for data, images and 360videos (VR videos) can be found here:
 https://github.com/lluisd/pumptrack-map-assets
 
 ## Demo
-https://pumptrack-map-app.azurewebsites.net/
+https://gironapumptracks.com
 

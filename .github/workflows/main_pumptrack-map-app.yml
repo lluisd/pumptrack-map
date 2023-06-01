@@ -5,6 +5,8 @@ name: Build and deploy Node.js app to Azure Web App - pumptrack-map-app
 
 on:
   push:
+    paths-ignore:
+      - '**.md'
     branches:
       - main
   workflow_dispatch:
