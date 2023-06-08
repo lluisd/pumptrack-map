@@ -59,10 +59,19 @@ const SpotCard = ({spot, blurImages, handlerOnClose}) => {
     }
     else if (spot.hasOpeningHours) {
       status = 'warning'
-    } else if (spot.status === 'open') {
+    }
+    else if (spot.status === 'open') {
       status = 'success'
     }
     return status
+  }
+
+  const getStatusText = (spot) => {
+    let text = t(spot.status)
+    if (spot.hasOpeningHours) {
+      text = t('timetable')
+    }
+    return text
   }
 
   const getLink = (brand) => {
@@ -158,7 +167,7 @@ const SpotCard = ({spot, blurImages, handlerOnClose}) => {
                         <Typography variant="subtitle1" gutterBottom>
                           <Grid container direction="row" alignItems="center" spacing={1} justifyContent="flex-end">
                             <Grid item>
-                              <Chip label={t(spot.status)} color={getStatus(spot)}  />
+                              <Chip label={getStatusText(spot)} color={getStatus(spot)}  />
                             </Grid>
                           </Grid>
                         </Typography>
