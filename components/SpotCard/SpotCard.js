@@ -54,7 +54,7 @@ const SpotCard = ({spot, blurImages, handlerOnClose}) => {
 
   const getStatus = (spot) => {
     let status = 'error'
-    if (spot.status === 'construction') {
+    if (['construction', 'private'].includes(spot.status)) {
       status = 'error'
     }
     else if (spot.hasOpeningHours) {
