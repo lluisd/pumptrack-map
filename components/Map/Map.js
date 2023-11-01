@@ -58,8 +58,11 @@ const Map = ({center, zoom, markers, maxBounds, onClick}) => {
       </div>
 
       <TileLayer
-        attribution='ap tiles by Stamen Design, under CC BY 3.0. Data by OpenStreetMap, under ODbL.'
-        url="https://stamen-tiles.a.ssl.fastly.net/toner/{z}/{x}/{y}.png"
+        attribution='copy; <a href="https://stadiamaps.com/" target="_blank">Stadia Maps</a>
+                    &copy; <a href="https://www.stamen.com/" target="_blank">Stamen Design</a>
+                    &copy; <a href="https://openmaptiles.org/" target="_blank">OpenMapTiles</a>
+                    &copy; <a href="https://www.openstreetmap.org/about/" target="_blank">OpenStreetMap contributors</a>'
+        url="https://tiles.stadiamaps.com/tiles/stamen_toner_lite/{z}/{x}/{y}{r}.png"
       />
       <ZoomControl position="bottomright" />
       <FeatureGroup ref={groupRef}>
