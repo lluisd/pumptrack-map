@@ -25,7 +25,7 @@ const Contact = ({open, onClose}) => {
       </DialogTitle>
       <DialogContent dividers>
         <Typography gutterBottom>
-          {t('contact-text')} <strong><a href = "mailto: admin@gironapumptracks.com">admin@gironapumptracks.com</a></strong>
+          {t('contact-text')} <strong><a href = "mailto: admin@pumptracks.311312.xyz">admin@pumptracks.311312.xyz</a></strong>
         </Typography>
       </DialogContent>
     </Dialog>
