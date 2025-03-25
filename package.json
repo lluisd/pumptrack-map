@@ -21,7 +21,7 @@
     "aframe-react": "^4.4.0",
     "i18next": "^22.5.0",
     "leaflet": "^1.9.4",
-    "next": "^13.4.4",
+    "next": "^14.2.25",
     "next-i18next": "^13.2.2",
     "plaiceholder": "^2.5.0",
     "react": "^18.2.0",
