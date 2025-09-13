@@ -10,7 +10,7 @@ const nextConfig = {
     dangerouslyAllowSVG: true,
     reactStrictMode: true,
     minimumCacheTTL: 60,
-    domains: ['localhost', 'cdn-pump.311312.xyz'],
+    domains: ['pumptracks.311312.xyz'],
     //disableStaticImages: true
   },
   i18n: {
